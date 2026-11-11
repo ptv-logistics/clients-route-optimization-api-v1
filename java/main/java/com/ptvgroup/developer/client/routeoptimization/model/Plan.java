@@ -57,7 +57,7 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   Plan.JSON_PROPERTY_UNPLANNED_TRANSPORT_IDS,
   Plan.JSON_PROPERTY_WARNINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-27T08:50:35.495306091Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class Plan {
   public static final String JSON_PROPERTY_ID = "id";
   private UUID id;

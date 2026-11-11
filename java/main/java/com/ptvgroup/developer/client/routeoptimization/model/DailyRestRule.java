@@ -43,7 +43,7 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   DailyRestRule.JSON_PROPERTY_MAXIMUM_TRAVEL_TIME_BETWEEN_DAILY_RESTS,
   DailyRestRule.JSON_PROPERTY_DAILY_REST_POSITION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-27T08:50:35.495306091Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class DailyRestRule {
   public static final String JSON_PROPERTY_DAILY_REST_TIME = "dailyRestTime";
   private Integer dailyRestTime;

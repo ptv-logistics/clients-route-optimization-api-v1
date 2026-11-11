@@ -1,4 +1,4 @@
-# Clients for the Route Optimization API (Version 1.11)
+# Clients for the Route Optimization API V1 (Version 1.11)
 
 Using client classes makes it easier and more convenient to integrate the API into an existing programming environment. We provide here clients for Java, C# and TypeScript. Alternatively you can generate the clients yourself by using this [tutorial](https://developer.myptv.com/en/resources/tutorials/general/how-generate-clients-ptv-developer-apis).
 
@@ -84,4 +84,4 @@ Language depending information:
 
  &nbsp;  
  &nbsp;  
- Please refer to our [Route Optimization API](https://developer.myptv.com/en/documentation/route-optimization-api/quick-start-route-optimization-api) documentation.
+ Please refer to our [Route Optimization API V1](https://developer.myptv.com/en/documentation/route-optimization-api-v1-maintenance/quick-start-route-optimisation-api-v1) documentation.

@@ -36,7 +36,7 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   MixedLoadingProhibition.JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY1,
   MixedLoadingProhibition.JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY2
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-10-27T08:50:35.495306091Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
 public class MixedLoadingProhibition {
   public static final String JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY1 = "conflictingLoadCategory1";
   private String conflictingLoadCategory1;
