@@ -56,42 +56,54 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   Vehicle.JSON_PROPERTY_MAXIMUM_DISTANCE,
   Vehicle.JSON_PROPERTY_MAXIMUM_NUMBER_OF_CUSTOMER_STOPS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class Vehicle {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_CAPACITIES = "capacities";
+  @javax.annotation.Nullable
   private List<Integer> capacities;
 
   public static final String JSON_PROPERTY_ALTERNATIVE_CAPACITIES = "alternativeCapacities";
+  @javax.annotation.Nullable
   private List<List<Integer>> alternativeCapacities;
 
   public static final String JSON_PROPERTY_CAPACITIES_CHANGE_POSITION = "capacitiesChangePosition";
+  @javax.annotation.Nullable
   private CapacitiesChangePosition capacitiesChangePosition = CapacitiesChangePosition.BETWEEN_TRIPS;
 
   public static final String JSON_PROPERTY_EQUIPMENT = "equipment";
+  @javax.annotation.Nullable
   private List<String> equipment;
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
+  @javax.annotation.Nullable
   private String profile;
 
   public static final String JSON_PROPERTY_START_LOCATION_ID = "startLocationId";
+  @javax.annotation.Nullable
   private String startLocationId;
 
   public static final String JSON_PROPERTY_END_LOCATION_ID = "endLocationId";
+  @javax.annotation.Nullable
   private String endLocationId;
 
   public static final String JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP = "serviceTimePerTransportStop";
+  @javax.annotation.Nullable
   private Integer serviceTimePerTransportStop = 0;
 
   public static final String JSON_PROPERTY_SERVICE_TIME_FACTOR = "serviceTimeFactor";
+  @javax.annotation.Nullable
   private Double serviceTimeFactor = 1d;
 
   public static final String JSON_PROPERTY_IGNORE_MIXED_LOADING_PROHIBITIONS = "ignoreMixedLoadingProhibitions";
+  @javax.annotation.Nullable
   private Boolean ignoreMixedLoadingProhibitions = false;
 
   public static final String JSON_PROPERTY_ROUTE_START_INTERVAL = "routeStartInterval";
+  @javax.annotation.Nullable
   private TimeInterval routeStartInterval;
 
   public static final String JSON_PROPERTY_MAXIMUM_DISTANCE = "maximumDistance";
@@ -103,7 +115,7 @@ public class Vehicle {
   public Vehicle() { 
   }
 
-  public Vehicle id(String id) {
+  public Vehicle id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -113,21 +125,21 @@ public class Vehicle {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getId() {
     return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public Vehicle capacities(List<Integer> capacities) {
+  public Vehicle capacities(@javax.annotation.Nullable List<Integer> capacities) {
     this.capacities = capacities;
     return this;
   }
@@ -145,21 +157,21 @@ public class Vehicle {
    * @return capacities
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CAPACITIES)
+  @JsonProperty(value = JSON_PROPERTY_CAPACITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Integer> getCapacities() {
     return capacities;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CAPACITIES)
+  @JsonProperty(value = JSON_PROPERTY_CAPACITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCapacities(List<Integer> capacities) {
+  public void setCapacities(@javax.annotation.Nullable List<Integer> capacities) {
     this.capacities = capacities;
   }
 
 
-  public Vehicle alternativeCapacities(List<List<Integer>> alternativeCapacities) {
+  public Vehicle alternativeCapacities(@javax.annotation.Nullable List<List<Integer>> alternativeCapacities) {
     this.alternativeCapacities = alternativeCapacities;
     return this;
   }
@@ -177,21 +189,21 @@ public class Vehicle {
    * @return alternativeCapacities
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALTERNATIVE_CAPACITIES)
+  @JsonProperty(value = JSON_PROPERTY_ALTERNATIVE_CAPACITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<List<Integer>> getAlternativeCapacities() {
     return alternativeCapacities;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALTERNATIVE_CAPACITIES)
+  @JsonProperty(value = JSON_PROPERTY_ALTERNATIVE_CAPACITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlternativeCapacities(List<List<Integer>> alternativeCapacities) {
+  public void setAlternativeCapacities(@javax.annotation.Nullable List<List<Integer>> alternativeCapacities) {
     this.alternativeCapacities = alternativeCapacities;
   }
 
 
-  public Vehicle capacitiesChangePosition(CapacitiesChangePosition capacitiesChangePosition) {
+  public Vehicle capacitiesChangePosition(@javax.annotation.Nullable CapacitiesChangePosition capacitiesChangePosition) {
     this.capacitiesChangePosition = capacitiesChangePosition;
     return this;
   }
@@ -201,21 +213,21 @@ public class Vehicle {
    * @return capacitiesChangePosition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CAPACITIES_CHANGE_POSITION)
+  @JsonProperty(value = JSON_PROPERTY_CAPACITIES_CHANGE_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CapacitiesChangePosition getCapacitiesChangePosition() {
     return capacitiesChangePosition;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CAPACITIES_CHANGE_POSITION)
+  @JsonProperty(value = JSON_PROPERTY_CAPACITIES_CHANGE_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCapacitiesChangePosition(CapacitiesChangePosition capacitiesChangePosition) {
+  public void setCapacitiesChangePosition(@javax.annotation.Nullable CapacitiesChangePosition capacitiesChangePosition) {
     this.capacitiesChangePosition = capacitiesChangePosition;
   }
 
 
-  public Vehicle equipment(List<String> equipment) {
+  public Vehicle equipment(@javax.annotation.Nullable List<String> equipment) {
     this.equipment = equipment;
     return this;
   }
@@ -233,21 +245,21 @@ public class Vehicle {
    * @return equipment
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EQUIPMENT)
+  @JsonProperty(value = JSON_PROPERTY_EQUIPMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getEquipment() {
     return equipment;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EQUIPMENT)
+  @JsonProperty(value = JSON_PROPERTY_EQUIPMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEquipment(List<String> equipment) {
+  public void setEquipment(@javax.annotation.Nullable List<String> equipment) {
     this.equipment = equipment;
   }
 
 
-  public Vehicle profile(String profile) {
+  public Vehicle profile(@javax.annotation.Nullable String profile) {
     this.profile = profile;
     return this;
   }
@@ -257,21 +269,21 @@ public class Vehicle {
    * @return profile
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROFILE)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProfile() {
     return profile;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProfile(String profile) {
+  public void setProfile(@javax.annotation.Nullable String profile) {
     this.profile = profile;
   }
 
 
-  public Vehicle startLocationId(String startLocationId) {
+  public Vehicle startLocationId(@javax.annotation.Nullable String startLocationId) {
     this.startLocationId = startLocationId;
     return this;
   }
@@ -281,21 +293,21 @@ public class Vehicle {
    * @return startLocationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_START_LOCATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_START_LOCATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getStartLocationId() {
     return startLocationId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_START_LOCATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_START_LOCATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartLocationId(String startLocationId) {
+  public void setStartLocationId(@javax.annotation.Nullable String startLocationId) {
     this.startLocationId = startLocationId;
   }
 
 
-  public Vehicle endLocationId(String endLocationId) {
+  public Vehicle endLocationId(@javax.annotation.Nullable String endLocationId) {
     this.endLocationId = endLocationId;
     return this;
   }
@@ -305,21 +317,21 @@ public class Vehicle {
    * @return endLocationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_END_LOCATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_END_LOCATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEndLocationId() {
     return endLocationId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_END_LOCATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_END_LOCATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndLocationId(String endLocationId) {
+  public void setEndLocationId(@javax.annotation.Nullable String endLocationId) {
     this.endLocationId = endLocationId;
   }
 
 
-  public Vehicle serviceTimePerTransportStop(Integer serviceTimePerTransportStop) {
+  public Vehicle serviceTimePerTransportStop(@javax.annotation.Nullable Integer serviceTimePerTransportStop) {
     this.serviceTimePerTransportStop = serviceTimePerTransportStop;
     return this;
   }
@@ -330,21 +342,21 @@ public class Vehicle {
    * @return serviceTimePerTransportStop
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP)
+  @JsonProperty(value = JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getServiceTimePerTransportStop() {
     return serviceTimePerTransportStop;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP)
+  @JsonProperty(value = JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServiceTimePerTransportStop(Integer serviceTimePerTransportStop) {
+  public void setServiceTimePerTransportStop(@javax.annotation.Nullable Integer serviceTimePerTransportStop) {
     this.serviceTimePerTransportStop = serviceTimePerTransportStop;
   }
 
 
-  public Vehicle serviceTimeFactor(Double serviceTimeFactor) {
+  public Vehicle serviceTimeFactor(@javax.annotation.Nullable Double serviceTimeFactor) {
     this.serviceTimeFactor = serviceTimeFactor;
     return this;
   }
@@ -356,21 +368,21 @@ public class Vehicle {
    * @return serviceTimeFactor
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SERVICE_TIME_FACTOR)
+  @JsonProperty(value = JSON_PROPERTY_SERVICE_TIME_FACTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getServiceTimeFactor() {
     return serviceTimeFactor;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SERVICE_TIME_FACTOR)
+  @JsonProperty(value = JSON_PROPERTY_SERVICE_TIME_FACTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServiceTimeFactor(Double serviceTimeFactor) {
+  public void setServiceTimeFactor(@javax.annotation.Nullable Double serviceTimeFactor) {
     this.serviceTimeFactor = serviceTimeFactor;
   }
 
 
-  public Vehicle ignoreMixedLoadingProhibitions(Boolean ignoreMixedLoadingProhibitions) {
+  public Vehicle ignoreMixedLoadingProhibitions(@javax.annotation.Nullable Boolean ignoreMixedLoadingProhibitions) {
     this.ignoreMixedLoadingProhibitions = ignoreMixedLoadingProhibitions;
     return this;
   }
@@ -380,21 +392,21 @@ public class Vehicle {
    * @return ignoreMixedLoadingProhibitions
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IGNORE_MIXED_LOADING_PROHIBITIONS)
+  @JsonProperty(value = JSON_PROPERTY_IGNORE_MIXED_LOADING_PROHIBITIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getIgnoreMixedLoadingProhibitions() {
     return ignoreMixedLoadingProhibitions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IGNORE_MIXED_LOADING_PROHIBITIONS)
+  @JsonProperty(value = JSON_PROPERTY_IGNORE_MIXED_LOADING_PROHIBITIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIgnoreMixedLoadingProhibitions(Boolean ignoreMixedLoadingProhibitions) {
+  public void setIgnoreMixedLoadingProhibitions(@javax.annotation.Nullable Boolean ignoreMixedLoadingProhibitions) {
     this.ignoreMixedLoadingProhibitions = ignoreMixedLoadingProhibitions;
   }
 
 
-  public Vehicle routeStartInterval(TimeInterval routeStartInterval) {
+  public Vehicle routeStartInterval(@javax.annotation.Nullable TimeInterval routeStartInterval) {
     this.routeStartInterval = routeStartInterval;
     return this;
   }
@@ -404,21 +416,21 @@ public class Vehicle {
    * @return routeStartInterval
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTE_START_INTERVAL)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_START_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TimeInterval getRouteStartInterval() {
     return routeStartInterval;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTE_START_INTERVAL)
+  @JsonProperty(value = JSON_PROPERTY_ROUTE_START_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRouteStartInterval(TimeInterval routeStartInterval) {
+  public void setRouteStartInterval(@javax.annotation.Nullable TimeInterval routeStartInterval) {
     this.routeStartInterval = routeStartInterval;
   }
 
 
-  public Vehicle maximumDistance(Integer maximumDistance) {
+  public Vehicle maximumDistance(@javax.annotation.Nullable Integer maximumDistance) {
     this.maximumDistance = JsonNullable.<Integer>of(maximumDistance);
     return this;
   }
@@ -433,7 +445,7 @@ public class Vehicle {
         return maximumDistance.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_DISTANCE)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_DISTANCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getMaximumDistance_JsonNullable() {
@@ -445,12 +457,12 @@ public class Vehicle {
     this.maximumDistance = maximumDistance;
   }
 
-  public void setMaximumDistance(Integer maximumDistance) {
+  public void setMaximumDistance(@javax.annotation.Nullable Integer maximumDistance) {
     this.maximumDistance = JsonNullable.<Integer>of(maximumDistance);
   }
 
 
-  public Vehicle maximumNumberOfCustomerStops(Integer maximumNumberOfCustomerStops) {
+  public Vehicle maximumNumberOfCustomerStops(@javax.annotation.Nullable Integer maximumNumberOfCustomerStops) {
     this.maximumNumberOfCustomerStops = JsonNullable.<Integer>of(maximumNumberOfCustomerStops);
     return this;
   }
@@ -465,7 +477,7 @@ public class Vehicle {
         return maximumNumberOfCustomerStops.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_NUMBER_OF_CUSTOMER_STOPS)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_NUMBER_OF_CUSTOMER_STOPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getMaximumNumberOfCustomerStops_JsonNullable() {
@@ -477,7 +489,7 @@ public class Vehicle {
     this.maximumNumberOfCustomerStops = maximumNumberOfCustomerStops;
   }
 
-  public void setMaximumNumberOfCustomerStops(Integer maximumNumberOfCustomerStops) {
+  public void setMaximumNumberOfCustomerStops(@javax.annotation.Nullable Integer maximumNumberOfCustomerStops) {
     this.maximumNumberOfCustomerStops = JsonNullable.<Integer>of(maximumNumberOfCustomerStops);
   }
 
@@ -553,10 +565,7 @@ public class Vehicle {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -593,69 +602,69 @@ public class Vehicle {
 
     // add `id` to the URL query string
     if (getId() != null) {
-      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     // add `capacities` to the URL query string
     if (getCapacities() != null) {
       for (int i = 0; i < getCapacities().size(); i++) {
-        joiner.add(String.format("%scapacities%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(ApiClient.valueToString(getCapacities().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scapacities%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getCapacities().get(i)))));
       }
     }
 
     // add `alternativeCapacities` to the URL query string
     if (getAlternativeCapacities() != null) {
       for (int i = 0; i < getAlternativeCapacities().size(); i++) {
-        joiner.add(String.format("%salternativeCapacities%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(ApiClient.valueToString(getAlternativeCapacities().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%salternativeCapacities%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getAlternativeCapacities().get(i)))));
       }
     }
 
     // add `capacitiesChangePosition` to the URL query string
     if (getCapacitiesChangePosition() != null) {
-      joiner.add(String.format("%scapacitiesChangePosition%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getCapacitiesChangePosition()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%scapacitiesChangePosition%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCapacitiesChangePosition()))));
     }
 
     // add `equipment` to the URL query string
     if (getEquipment() != null) {
       for (int i = 0; i < getEquipment().size(); i++) {
-        joiner.add(String.format("%sequipment%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(ApiClient.valueToString(getEquipment().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sequipment%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getEquipment().get(i)))));
       }
     }
 
     // add `profile` to the URL query string
     if (getProfile() != null) {
-      joiner.add(String.format("%sprofile%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getProfile()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sprofile%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getProfile()))));
     }
 
     // add `startLocationId` to the URL query string
     if (getStartLocationId() != null) {
-      joiner.add(String.format("%sstartLocationId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getStartLocationId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstartLocationId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStartLocationId()))));
     }
 
     // add `endLocationId` to the URL query string
     if (getEndLocationId() != null) {
-      joiner.add(String.format("%sendLocationId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getEndLocationId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sendLocationId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEndLocationId()))));
     }
 
     // add `serviceTimePerTransportStop` to the URL query string
     if (getServiceTimePerTransportStop() != null) {
-      joiner.add(String.format("%sserviceTimePerTransportStop%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getServiceTimePerTransportStop()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sserviceTimePerTransportStop%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getServiceTimePerTransportStop()))));
     }
 
     // add `serviceTimeFactor` to the URL query string
     if (getServiceTimeFactor() != null) {
-      joiner.add(String.format("%sserviceTimeFactor%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getServiceTimeFactor()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sserviceTimeFactor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getServiceTimeFactor()))));
     }
 
     // add `ignoreMixedLoadingProhibitions` to the URL query string
     if (getIgnoreMixedLoadingProhibitions() != null) {
-      joiner.add(String.format("%signoreMixedLoadingProhibitions%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getIgnoreMixedLoadingProhibitions()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%signoreMixedLoadingProhibitions%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIgnoreMixedLoadingProhibitions()))));
     }
 
     // add `routeStartInterval` to the URL query string
@@ -665,12 +674,12 @@ public class Vehicle {
 
     // add `maximumDistance` to the URL query string
     if (getMaximumDistance() != null) {
-      joiner.add(String.format("%smaximumDistance%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getMaximumDistance()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaximumDistance%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaximumDistance()))));
     }
 
     // add `maximumNumberOfCustomerStops` to the URL query string
     if (getMaximumNumberOfCustomerStops() != null) {
-      joiner.add(String.format("%smaximumNumberOfCustomerStops%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getMaximumNumberOfCustomerStops()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaximumNumberOfCustomerStops%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaximumNumberOfCustomerStops()))));
     }
 
     return joiner.toString();

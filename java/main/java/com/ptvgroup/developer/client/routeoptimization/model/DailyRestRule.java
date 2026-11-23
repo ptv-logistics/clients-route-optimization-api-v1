@@ -43,9 +43,10 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   DailyRestRule.JSON_PROPERTY_MAXIMUM_TRAVEL_TIME_BETWEEN_DAILY_RESTS,
   DailyRestRule.JSON_PROPERTY_DAILY_REST_POSITION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class DailyRestRule {
   public static final String JSON_PROPERTY_DAILY_REST_TIME = "dailyRestTime";
+  @javax.annotation.Nonnull
   private Integer dailyRestTime;
 
   public static final String JSON_PROPERTY_MAXIMUM_DRIVING_TIME_BETWEEN_DAILY_RESTS = "maximumDrivingTimeBetweenDailyRests";
@@ -55,12 +56,13 @@ public class DailyRestRule {
   private JsonNullable<Integer> maximumTravelTimeBetweenDailyRests = JsonNullable.<Integer>undefined();
 
   public static final String JSON_PROPERTY_DAILY_REST_POSITION = "dailyRestPosition";
+  @javax.annotation.Nullable
   private DailyRestPosition dailyRestPosition = DailyRestPosition.BETWEEN_TRIPS;
 
   public DailyRestRule() { 
   }
 
-  public DailyRestRule dailyRestTime(Integer dailyRestTime) {
+  public DailyRestRule dailyRestTime(@javax.annotation.Nonnull Integer dailyRestTime) {
     this.dailyRestTime = dailyRestTime;
     return this;
   }
@@ -72,21 +74,21 @@ public class DailyRestRule {
    * @return dailyRestTime
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DAILY_REST_TIME)
+  @JsonProperty(value = JSON_PROPERTY_DAILY_REST_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getDailyRestTime() {
     return dailyRestTime;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DAILY_REST_TIME)
+  @JsonProperty(value = JSON_PROPERTY_DAILY_REST_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDailyRestTime(Integer dailyRestTime) {
+  public void setDailyRestTime(@javax.annotation.Nonnull Integer dailyRestTime) {
     this.dailyRestTime = dailyRestTime;
   }
 
 
-  public DailyRestRule maximumDrivingTimeBetweenDailyRests(Integer maximumDrivingTimeBetweenDailyRests) {
+  public DailyRestRule maximumDrivingTimeBetweenDailyRests(@javax.annotation.Nullable Integer maximumDrivingTimeBetweenDailyRests) {
     this.maximumDrivingTimeBetweenDailyRests = JsonNullable.<Integer>of(maximumDrivingTimeBetweenDailyRests);
     return this;
   }
@@ -102,7 +104,7 @@ public class DailyRestRule {
         return maximumDrivingTimeBetweenDailyRests.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_DRIVING_TIME_BETWEEN_DAILY_RESTS)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_DRIVING_TIME_BETWEEN_DAILY_RESTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getMaximumDrivingTimeBetweenDailyRests_JsonNullable() {
@@ -114,12 +116,12 @@ public class DailyRestRule {
     this.maximumDrivingTimeBetweenDailyRests = maximumDrivingTimeBetweenDailyRests;
   }
 
-  public void setMaximumDrivingTimeBetweenDailyRests(Integer maximumDrivingTimeBetweenDailyRests) {
+  public void setMaximumDrivingTimeBetweenDailyRests(@javax.annotation.Nullable Integer maximumDrivingTimeBetweenDailyRests) {
     this.maximumDrivingTimeBetweenDailyRests = JsonNullable.<Integer>of(maximumDrivingTimeBetweenDailyRests);
   }
 
 
-  public DailyRestRule maximumTravelTimeBetweenDailyRests(Integer maximumTravelTimeBetweenDailyRests) {
+  public DailyRestRule maximumTravelTimeBetweenDailyRests(@javax.annotation.Nullable Integer maximumTravelTimeBetweenDailyRests) {
     this.maximumTravelTimeBetweenDailyRests = JsonNullable.<Integer>of(maximumTravelTimeBetweenDailyRests);
     return this;
   }
@@ -135,7 +137,7 @@ public class DailyRestRule {
         return maximumTravelTimeBetweenDailyRests.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_TRAVEL_TIME_BETWEEN_DAILY_RESTS)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_TRAVEL_TIME_BETWEEN_DAILY_RESTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getMaximumTravelTimeBetweenDailyRests_JsonNullable() {
@@ -147,12 +149,12 @@ public class DailyRestRule {
     this.maximumTravelTimeBetweenDailyRests = maximumTravelTimeBetweenDailyRests;
   }
 
-  public void setMaximumTravelTimeBetweenDailyRests(Integer maximumTravelTimeBetweenDailyRests) {
+  public void setMaximumTravelTimeBetweenDailyRests(@javax.annotation.Nullable Integer maximumTravelTimeBetweenDailyRests) {
     this.maximumTravelTimeBetweenDailyRests = JsonNullable.<Integer>of(maximumTravelTimeBetweenDailyRests);
   }
 
 
-  public DailyRestRule dailyRestPosition(DailyRestPosition dailyRestPosition) {
+  public DailyRestRule dailyRestPosition(@javax.annotation.Nullable DailyRestPosition dailyRestPosition) {
     this.dailyRestPosition = dailyRestPosition;
     return this;
   }
@@ -162,16 +164,16 @@ public class DailyRestRule {
    * @return dailyRestPosition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DAILY_REST_POSITION)
+  @JsonProperty(value = JSON_PROPERTY_DAILY_REST_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DailyRestPosition getDailyRestPosition() {
     return dailyRestPosition;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DAILY_REST_POSITION)
+  @JsonProperty(value = JSON_PROPERTY_DAILY_REST_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDailyRestPosition(DailyRestPosition dailyRestPosition) {
+  public void setDailyRestPosition(@javax.annotation.Nullable DailyRestPosition dailyRestPosition) {
     this.dailyRestPosition = dailyRestPosition;
   }
 
@@ -227,10 +229,7 @@ public class DailyRestRule {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -267,22 +266,22 @@ public class DailyRestRule {
 
     // add `dailyRestTime` to the URL query string
     if (getDailyRestTime() != null) {
-      joiner.add(String.format("%sdailyRestTime%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getDailyRestTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdailyRestTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDailyRestTime()))));
     }
 
     // add `maximumDrivingTimeBetweenDailyRests` to the URL query string
     if (getMaximumDrivingTimeBetweenDailyRests() != null) {
-      joiner.add(String.format("%smaximumDrivingTimeBetweenDailyRests%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getMaximumDrivingTimeBetweenDailyRests()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaximumDrivingTimeBetweenDailyRests%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaximumDrivingTimeBetweenDailyRests()))));
     }
 
     // add `maximumTravelTimeBetweenDailyRests` to the URL query string
     if (getMaximumTravelTimeBetweenDailyRests() != null) {
-      joiner.add(String.format("%smaximumTravelTimeBetweenDailyRests%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getMaximumTravelTimeBetweenDailyRests()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaximumTravelTimeBetweenDailyRests%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaximumTravelTimeBetweenDailyRests()))));
     }
 
     // add `dailyRestPosition` to the URL query string
     if (getDailyRestPosition() != null) {
-      joiner.add(String.format("%sdailyRestPosition%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getDailyRestPosition()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdailyRestPosition%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDailyRestPosition()))));
     }
 
     return joiner.toString();

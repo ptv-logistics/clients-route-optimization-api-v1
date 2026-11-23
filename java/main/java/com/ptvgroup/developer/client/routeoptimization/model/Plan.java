@@ -57,42 +57,54 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   Plan.JSON_PROPERTY_UNPLANNED_TRANSPORT_IDS,
   Plan.JSON_PROPERTY_WARNINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class Plan {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private UUID id;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_LOCATIONS = "locations";
+  @javax.annotation.Nonnull
   private List<Location> locations;
 
   public static final String JSON_PROPERTY_VEHICLES = "vehicles";
+  @javax.annotation.Nonnull
   private List<Vehicle> vehicles;
 
   public static final String JSON_PROPERTY_DRIVERS = "drivers";
+  @javax.annotation.Nullable
   private List<Driver> drivers;
 
   public static final String JSON_PROPERTY_TRANSPORTS = "transports";
+  @javax.annotation.Nonnull
   private List<Transport> transports;
 
   public static final String JSON_PROPERTY_PLANNING_HORIZON = "planningHorizon";
+  @javax.annotation.Nullable
   private TimeInterval planningHorizon;
 
   public static final String JSON_PROPERTY_RESTRICTIONS = "restrictions";
+  @javax.annotation.Nullable
   private PlanningRestrictions restrictions;
 
   public static final String JSON_PROPERTY_ROUTES = "routes";
+  @javax.annotation.Nullable
   private List<Route> routes;
 
   public static final String JSON_PROPERTY_UNPLANNED_VEHICLE_IDS = "unplannedVehicleIds";
+  @javax.annotation.Nullable
   private List<String> unplannedVehicleIds;
 
   public static final String JSON_PROPERTY_UNPLANNED_TRANSPORT_IDS = "unplannedTransportIds";
+  @javax.annotation.Nullable
   private List<String> unplannedTransportIds;
 
   public static final String JSON_PROPERTY_WARNINGS = "warnings";
+  @javax.annotation.Nullable
   private List<Warning> warnings;
 
   public Plan() { 
@@ -117,7 +129,7 @@ public class Plan {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public UUID getId() {
     return id;
@@ -126,7 +138,7 @@ public class Plan {
 
 
 
-  public Plan description(String description) {
+  public Plan description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -136,21 +148,21 @@ public class Plan {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
     return description;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public Plan locations(List<Location> locations) {
+  public Plan locations(@javax.annotation.Nonnull List<Location> locations) {
     this.locations = locations;
     return this;
   }
@@ -168,21 +180,21 @@ public class Plan {
    * @return locations
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOCATIONS)
+  @JsonProperty(value = JSON_PROPERTY_LOCATIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<Location> getLocations() {
     return locations;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCATIONS)
+  @JsonProperty(value = JSON_PROPERTY_LOCATIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLocations(List<Location> locations) {
+  public void setLocations(@javax.annotation.Nonnull List<Location> locations) {
     this.locations = locations;
   }
 
 
-  public Plan vehicles(List<Vehicle> vehicles) {
+  public Plan vehicles(@javax.annotation.Nonnull List<Vehicle> vehicles) {
     this.vehicles = vehicles;
     return this;
   }
@@ -200,21 +212,21 @@ public class Plan {
    * @return vehicles
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VEHICLES)
+  @JsonProperty(value = JSON_PROPERTY_VEHICLES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<Vehicle> getVehicles() {
     return vehicles;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VEHICLES)
+  @JsonProperty(value = JSON_PROPERTY_VEHICLES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVehicles(List<Vehicle> vehicles) {
+  public void setVehicles(@javax.annotation.Nonnull List<Vehicle> vehicles) {
     this.vehicles = vehicles;
   }
 
 
-  public Plan drivers(List<Driver> drivers) {
+  public Plan drivers(@javax.annotation.Nullable List<Driver> drivers) {
     this.drivers = drivers;
     return this;
   }
@@ -232,21 +244,21 @@ public class Plan {
    * @return drivers
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DRIVERS)
+  @JsonProperty(value = JSON_PROPERTY_DRIVERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Driver> getDrivers() {
     return drivers;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DRIVERS)
+  @JsonProperty(value = JSON_PROPERTY_DRIVERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDrivers(List<Driver> drivers) {
+  public void setDrivers(@javax.annotation.Nullable List<Driver> drivers) {
     this.drivers = drivers;
   }
 
 
-  public Plan transports(List<Transport> transports) {
+  public Plan transports(@javax.annotation.Nonnull List<Transport> transports) {
     this.transports = transports;
     return this;
   }
@@ -264,21 +276,21 @@ public class Plan {
    * @return transports
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRANSPORTS)
+  @JsonProperty(value = JSON_PROPERTY_TRANSPORTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<Transport> getTransports() {
     return transports;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRANSPORTS)
+  @JsonProperty(value = JSON_PROPERTY_TRANSPORTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransports(List<Transport> transports) {
+  public void setTransports(@javax.annotation.Nonnull List<Transport> transports) {
     this.transports = transports;
   }
 
 
-  public Plan planningHorizon(TimeInterval planningHorizon) {
+  public Plan planningHorizon(@javax.annotation.Nullable TimeInterval planningHorizon) {
     this.planningHorizon = planningHorizon;
     return this;
   }
@@ -288,21 +300,21 @@ public class Plan {
    * @return planningHorizon
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PLANNING_HORIZON)
+  @JsonProperty(value = JSON_PROPERTY_PLANNING_HORIZON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TimeInterval getPlanningHorizon() {
     return planningHorizon;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PLANNING_HORIZON)
+  @JsonProperty(value = JSON_PROPERTY_PLANNING_HORIZON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPlanningHorizon(TimeInterval planningHorizon) {
+  public void setPlanningHorizon(@javax.annotation.Nullable TimeInterval planningHorizon) {
     this.planningHorizon = planningHorizon;
   }
 
 
-  public Plan restrictions(PlanningRestrictions restrictions) {
+  public Plan restrictions(@javax.annotation.Nullable PlanningRestrictions restrictions) {
     this.restrictions = restrictions;
     return this;
   }
@@ -312,21 +324,21 @@ public class Plan {
    * @return restrictions
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESTRICTIONS)
+  @JsonProperty(value = JSON_PROPERTY_RESTRICTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public PlanningRestrictions getRestrictions() {
     return restrictions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESTRICTIONS)
+  @JsonProperty(value = JSON_PROPERTY_RESTRICTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRestrictions(PlanningRestrictions restrictions) {
+  public void setRestrictions(@javax.annotation.Nullable PlanningRestrictions restrictions) {
     this.restrictions = restrictions;
   }
 
 
-  public Plan routes(List<Route> routes) {
+  public Plan routes(@javax.annotation.Nullable List<Route> routes) {
     this.routes = routes;
     return this;
   }
@@ -344,16 +356,16 @@ public class Plan {
    * @return routes
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ROUTES)
+  @JsonProperty(value = JSON_PROPERTY_ROUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Route> getRoutes() {
     return routes;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ROUTES)
+  @JsonProperty(value = JSON_PROPERTY_ROUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRoutes(List<Route> routes) {
+  public void setRoutes(@javax.annotation.Nullable List<Route> routes) {
     this.routes = routes;
   }
 
@@ -363,7 +375,7 @@ public class Plan {
    * @return unplannedVehicleIds
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_UNPLANNED_VEHICLE_IDS)
+  @JsonProperty(value = JSON_PROPERTY_UNPLANNED_VEHICLE_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getUnplannedVehicleIds() {
     return unplannedVehicleIds;
@@ -377,7 +389,7 @@ public class Plan {
    * @return unplannedTransportIds
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_UNPLANNED_TRANSPORT_IDS)
+  @JsonProperty(value = JSON_PROPERTY_UNPLANNED_TRANSPORT_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getUnplannedTransportIds() {
     return unplannedTransportIds;
@@ -391,7 +403,7 @@ public class Plan {
    * @return warnings
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WARNINGS)
+  @JsonProperty(value = JSON_PROPERTY_WARNINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Warning> getWarnings() {
     return warnings;
@@ -456,10 +468,7 @@ public class Plan {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -496,20 +505,20 @@ public class Plan {
 
     // add `id` to the URL query string
     if (getId() != null) {
-      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     // add `description` to the URL query string
     if (getDescription() != null) {
-      joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getDescription()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDescription()))));
     }
 
     // add `locations` to the URL query string
     if (getLocations() != null) {
       for (int i = 0; i < getLocations().size(); i++) {
         if (getLocations().get(i) != null) {
-          joiner.add(getLocations().get(i).toUrlQueryString(String.format("%slocations%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getLocations().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%slocations%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -518,8 +527,8 @@ public class Plan {
     if (getVehicles() != null) {
       for (int i = 0; i < getVehicles().size(); i++) {
         if (getVehicles().get(i) != null) {
-          joiner.add(getVehicles().get(i).toUrlQueryString(String.format("%svehicles%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getVehicles().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%svehicles%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -528,8 +537,8 @@ public class Plan {
     if (getDrivers() != null) {
       for (int i = 0; i < getDrivers().size(); i++) {
         if (getDrivers().get(i) != null) {
-          joiner.add(getDrivers().get(i).toUrlQueryString(String.format("%sdrivers%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getDrivers().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sdrivers%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -538,8 +547,8 @@ public class Plan {
     if (getTransports() != null) {
       for (int i = 0; i < getTransports().size(); i++) {
         if (getTransports().get(i) != null) {
-          joiner.add(getTransports().get(i).toUrlQueryString(String.format("%stransports%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getTransports().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%stransports%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -558,8 +567,8 @@ public class Plan {
     if (getRoutes() != null) {
       for (int i = 0; i < getRoutes().size(); i++) {
         if (getRoutes().get(i) != null) {
-          joiner.add(getRoutes().get(i).toUrlQueryString(String.format("%sroutes%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getRoutes().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sroutes%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -567,18 +576,18 @@ public class Plan {
     // add `unplannedVehicleIds` to the URL query string
     if (getUnplannedVehicleIds() != null) {
       for (int i = 0; i < getUnplannedVehicleIds().size(); i++) {
-        joiner.add(String.format("%sunplannedVehicleIds%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(ApiClient.valueToString(getUnplannedVehicleIds().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sunplannedVehicleIds%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getUnplannedVehicleIds().get(i)))));
       }
     }
 
     // add `unplannedTransportIds` to the URL query string
     if (getUnplannedTransportIds() != null) {
       for (int i = 0; i < getUnplannedTransportIds().size(); i++) {
-        joiner.add(String.format("%sunplannedTransportIds%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-            URLEncoder.encode(ApiClient.valueToString(getUnplannedTransportIds().get(i)), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sunplannedTransportIds%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getUnplannedTransportIds().get(i)))));
       }
     }
 
@@ -586,8 +595,8 @@ public class Plan {
     if (getWarnings() != null) {
       for (int i = 0; i < getWarnings().size(); i++) {
         if (getWarnings().get(i) != null) {
-          joiner.add(getWarnings().get(i).toUrlQueryString(String.format("%swarnings%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getWarnings().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%swarnings%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

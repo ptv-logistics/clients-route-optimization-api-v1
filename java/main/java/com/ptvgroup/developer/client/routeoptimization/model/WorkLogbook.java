@@ -44,12 +44,14 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   WorkLogbook.JSON_PROPERTY_ACCUMULATED_DRIVING_TIME_SINCE_LAST_DAILY_REST,
   WorkLogbook.JSON_PROPERTY_ACCUMULATED_TRAVEL_TIME_SINCE_LAST_DAILY_REST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class WorkLogbook {
   public static final String JSON_PROPERTY_LAST_TIME_THE_DRIVER_WORKED = "lastTimeTheDriverWorked";
+  @javax.annotation.Nonnull
   private OffsetDateTime lastTimeTheDriverWorked;
 
   public static final String JSON_PROPERTY_ACCUMULATED_DRIVING_TIME_SINCE_LAST_BREAK = "accumulatedDrivingTimeSinceLastBreak";
+  @javax.annotation.Nullable
   private Integer accumulatedDrivingTimeSinceLastBreak = 0;
 
   public static final String JSON_PROPERTY_ACCUMULATED_WORKING_TIME_SINCE_LAST_BREAK = "accumulatedWorkingTimeSinceLastBreak";
@@ -64,7 +66,7 @@ public class WorkLogbook {
   public WorkLogbook() { 
   }
 
-  public WorkLogbook lastTimeTheDriverWorked(OffsetDateTime lastTimeTheDriverWorked) {
+  public WorkLogbook lastTimeTheDriverWorked(@javax.annotation.Nonnull OffsetDateTime lastTimeTheDriverWorked) {
     this.lastTimeTheDriverWorked = lastTimeTheDriverWorked;
     return this;
   }
@@ -74,21 +76,21 @@ public class WorkLogbook {
    * @return lastTimeTheDriverWorked
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LAST_TIME_THE_DRIVER_WORKED)
+  @JsonProperty(value = JSON_PROPERTY_LAST_TIME_THE_DRIVER_WORKED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public OffsetDateTime getLastTimeTheDriverWorked() {
     return lastTimeTheDriverWorked;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LAST_TIME_THE_DRIVER_WORKED)
+  @JsonProperty(value = JSON_PROPERTY_LAST_TIME_THE_DRIVER_WORKED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLastTimeTheDriverWorked(OffsetDateTime lastTimeTheDriverWorked) {
+  public void setLastTimeTheDriverWorked(@javax.annotation.Nonnull OffsetDateTime lastTimeTheDriverWorked) {
     this.lastTimeTheDriverWorked = lastTimeTheDriverWorked;
   }
 
 
-  public WorkLogbook accumulatedDrivingTimeSinceLastBreak(Integer accumulatedDrivingTimeSinceLastBreak) {
+  public WorkLogbook accumulatedDrivingTimeSinceLastBreak(@javax.annotation.Nullable Integer accumulatedDrivingTimeSinceLastBreak) {
     this.accumulatedDrivingTimeSinceLastBreak = accumulatedDrivingTimeSinceLastBreak;
     return this;
   }
@@ -99,21 +101,21 @@ public class WorkLogbook {
    * @return accumulatedDrivingTimeSinceLastBreak
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACCUMULATED_DRIVING_TIME_SINCE_LAST_BREAK)
+  @JsonProperty(value = JSON_PROPERTY_ACCUMULATED_DRIVING_TIME_SINCE_LAST_BREAK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getAccumulatedDrivingTimeSinceLastBreak() {
     return accumulatedDrivingTimeSinceLastBreak;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCUMULATED_DRIVING_TIME_SINCE_LAST_BREAK)
+  @JsonProperty(value = JSON_PROPERTY_ACCUMULATED_DRIVING_TIME_SINCE_LAST_BREAK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAccumulatedDrivingTimeSinceLastBreak(Integer accumulatedDrivingTimeSinceLastBreak) {
+  public void setAccumulatedDrivingTimeSinceLastBreak(@javax.annotation.Nullable Integer accumulatedDrivingTimeSinceLastBreak) {
     this.accumulatedDrivingTimeSinceLastBreak = accumulatedDrivingTimeSinceLastBreak;
   }
 
 
-  public WorkLogbook accumulatedWorkingTimeSinceLastBreak(Integer accumulatedWorkingTimeSinceLastBreak) {
+  public WorkLogbook accumulatedWorkingTimeSinceLastBreak(@javax.annotation.Nullable Integer accumulatedWorkingTimeSinceLastBreak) {
     this.accumulatedWorkingTimeSinceLastBreak = JsonNullable.<Integer>of(accumulatedWorkingTimeSinceLastBreak);
     return this;
   }
@@ -129,7 +131,7 @@ public class WorkLogbook {
         return accumulatedWorkingTimeSinceLastBreak.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_ACCUMULATED_WORKING_TIME_SINCE_LAST_BREAK)
+  @JsonProperty(value = JSON_PROPERTY_ACCUMULATED_WORKING_TIME_SINCE_LAST_BREAK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getAccumulatedWorkingTimeSinceLastBreak_JsonNullable() {
@@ -141,12 +143,12 @@ public class WorkLogbook {
     this.accumulatedWorkingTimeSinceLastBreak = accumulatedWorkingTimeSinceLastBreak;
   }
 
-  public void setAccumulatedWorkingTimeSinceLastBreak(Integer accumulatedWorkingTimeSinceLastBreak) {
+  public void setAccumulatedWorkingTimeSinceLastBreak(@javax.annotation.Nullable Integer accumulatedWorkingTimeSinceLastBreak) {
     this.accumulatedWorkingTimeSinceLastBreak = JsonNullable.<Integer>of(accumulatedWorkingTimeSinceLastBreak);
   }
 
 
-  public WorkLogbook accumulatedDrivingTimeSinceLastDailyRest(Integer accumulatedDrivingTimeSinceLastDailyRest) {
+  public WorkLogbook accumulatedDrivingTimeSinceLastDailyRest(@javax.annotation.Nullable Integer accumulatedDrivingTimeSinceLastDailyRest) {
     this.accumulatedDrivingTimeSinceLastDailyRest = JsonNullable.<Integer>of(accumulatedDrivingTimeSinceLastDailyRest);
     return this;
   }
@@ -162,7 +164,7 @@ public class WorkLogbook {
         return accumulatedDrivingTimeSinceLastDailyRest.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_ACCUMULATED_DRIVING_TIME_SINCE_LAST_DAILY_REST)
+  @JsonProperty(value = JSON_PROPERTY_ACCUMULATED_DRIVING_TIME_SINCE_LAST_DAILY_REST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getAccumulatedDrivingTimeSinceLastDailyRest_JsonNullable() {
@@ -174,12 +176,12 @@ public class WorkLogbook {
     this.accumulatedDrivingTimeSinceLastDailyRest = accumulatedDrivingTimeSinceLastDailyRest;
   }
 
-  public void setAccumulatedDrivingTimeSinceLastDailyRest(Integer accumulatedDrivingTimeSinceLastDailyRest) {
+  public void setAccumulatedDrivingTimeSinceLastDailyRest(@javax.annotation.Nullable Integer accumulatedDrivingTimeSinceLastDailyRest) {
     this.accumulatedDrivingTimeSinceLastDailyRest = JsonNullable.<Integer>of(accumulatedDrivingTimeSinceLastDailyRest);
   }
 
 
-  public WorkLogbook accumulatedTravelTimeSinceLastDailyRest(Integer accumulatedTravelTimeSinceLastDailyRest) {
+  public WorkLogbook accumulatedTravelTimeSinceLastDailyRest(@javax.annotation.Nullable Integer accumulatedTravelTimeSinceLastDailyRest) {
     this.accumulatedTravelTimeSinceLastDailyRest = JsonNullable.<Integer>of(accumulatedTravelTimeSinceLastDailyRest);
     return this;
   }
@@ -195,7 +197,7 @@ public class WorkLogbook {
         return accumulatedTravelTimeSinceLastDailyRest.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_ACCUMULATED_TRAVEL_TIME_SINCE_LAST_DAILY_REST)
+  @JsonProperty(value = JSON_PROPERTY_ACCUMULATED_TRAVEL_TIME_SINCE_LAST_DAILY_REST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getAccumulatedTravelTimeSinceLastDailyRest_JsonNullable() {
@@ -207,7 +209,7 @@ public class WorkLogbook {
     this.accumulatedTravelTimeSinceLastDailyRest = accumulatedTravelTimeSinceLastDailyRest;
   }
 
-  public void setAccumulatedTravelTimeSinceLastDailyRest(Integer accumulatedTravelTimeSinceLastDailyRest) {
+  public void setAccumulatedTravelTimeSinceLastDailyRest(@javax.annotation.Nullable Integer accumulatedTravelTimeSinceLastDailyRest) {
     this.accumulatedTravelTimeSinceLastDailyRest = JsonNullable.<Integer>of(accumulatedTravelTimeSinceLastDailyRest);
   }
 
@@ -265,10 +267,7 @@ public class WorkLogbook {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -305,27 +304,27 @@ public class WorkLogbook {
 
     // add `lastTimeTheDriverWorked` to the URL query string
     if (getLastTimeTheDriverWorked() != null) {
-      joiner.add(String.format("%slastTimeTheDriverWorked%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getLastTimeTheDriverWorked()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%slastTimeTheDriverWorked%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLastTimeTheDriverWorked()))));
     }
 
     // add `accumulatedDrivingTimeSinceLastBreak` to the URL query string
     if (getAccumulatedDrivingTimeSinceLastBreak() != null) {
-      joiner.add(String.format("%saccumulatedDrivingTimeSinceLastBreak%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getAccumulatedDrivingTimeSinceLastBreak()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%saccumulatedDrivingTimeSinceLastBreak%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAccumulatedDrivingTimeSinceLastBreak()))));
     }
 
     // add `accumulatedWorkingTimeSinceLastBreak` to the URL query string
     if (getAccumulatedWorkingTimeSinceLastBreak() != null) {
-      joiner.add(String.format("%saccumulatedWorkingTimeSinceLastBreak%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getAccumulatedWorkingTimeSinceLastBreak()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%saccumulatedWorkingTimeSinceLastBreak%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAccumulatedWorkingTimeSinceLastBreak()))));
     }
 
     // add `accumulatedDrivingTimeSinceLastDailyRest` to the URL query string
     if (getAccumulatedDrivingTimeSinceLastDailyRest() != null) {
-      joiner.add(String.format("%saccumulatedDrivingTimeSinceLastDailyRest%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getAccumulatedDrivingTimeSinceLastDailyRest()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%saccumulatedDrivingTimeSinceLastDailyRest%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAccumulatedDrivingTimeSinceLastDailyRest()))));
     }
 
     // add `accumulatedTravelTimeSinceLastDailyRest` to the URL query string
     if (getAccumulatedTravelTimeSinceLastDailyRest() != null) {
-      joiner.add(String.format("%saccumulatedTravelTimeSinceLastDailyRest%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getAccumulatedTravelTimeSinceLastDailyRest()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%saccumulatedTravelTimeSinceLastDailyRest%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAccumulatedTravelTimeSinceLastDailyRest()))));
     }
 
     return joiner.toString();

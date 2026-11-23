@@ -44,36 +44,44 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   PlanSummary.JSON_PROPERTY_UPDATE_TIME,
   PlanSummary.JSON_PROPERTY_CREATION_TIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class PlanSummary {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private UUID id;
 
   public static final String JSON_PROPERTY_NUMBER_OF_LOCATIONS = "numberOfLocations";
+  @javax.annotation.Nonnull
   private Integer numberOfLocations;
 
   public static final String JSON_PROPERTY_NUMBER_OF_VEHICLES = "numberOfVehicles";
+  @javax.annotation.Nonnull
   private Integer numberOfVehicles;
 
   public static final String JSON_PROPERTY_NUMBER_OF_TRANSPORTS = "numberOfTransports";
+  @javax.annotation.Nonnull
   private Integer numberOfTransports;
 
   public static final String JSON_PROPERTY_NUMBER_OF_ROUTES = "numberOfRoutes";
+  @javax.annotation.Nonnull
   private Integer numberOfRoutes;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_UPDATE_TIME = "updateTime";
+  @javax.annotation.Nonnull
   private OffsetDateTime updateTime;
 
   public static final String JSON_PROPERTY_CREATION_TIME = "creationTime";
+  @javax.annotation.Nonnull
   private OffsetDateTime creationTime;
 
   public PlanSummary() { 
   }
 
-  public PlanSummary id(UUID id) {
+  public PlanSummary id(@javax.annotation.Nonnull UUID id) {
     this.id = id;
     return this;
   }
@@ -83,21 +91,21 @@ public class PlanSummary {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public UUID getId() {
     return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(UUID id) {
+  public void setId(@javax.annotation.Nonnull UUID id) {
     this.id = id;
   }
 
 
-  public PlanSummary numberOfLocations(Integer numberOfLocations) {
+  public PlanSummary numberOfLocations(@javax.annotation.Nonnull Integer numberOfLocations) {
     this.numberOfLocations = numberOfLocations;
     return this;
   }
@@ -107,21 +115,21 @@ public class PlanSummary {
    * @return numberOfLocations
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_LOCATIONS)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_LOCATIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getNumberOfLocations() {
     return numberOfLocations;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_LOCATIONS)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_LOCATIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNumberOfLocations(Integer numberOfLocations) {
+  public void setNumberOfLocations(@javax.annotation.Nonnull Integer numberOfLocations) {
     this.numberOfLocations = numberOfLocations;
   }
 
 
-  public PlanSummary numberOfVehicles(Integer numberOfVehicles) {
+  public PlanSummary numberOfVehicles(@javax.annotation.Nonnull Integer numberOfVehicles) {
     this.numberOfVehicles = numberOfVehicles;
     return this;
   }
@@ -131,21 +139,21 @@ public class PlanSummary {
    * @return numberOfVehicles
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_VEHICLES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_VEHICLES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getNumberOfVehicles() {
     return numberOfVehicles;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_VEHICLES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_VEHICLES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNumberOfVehicles(Integer numberOfVehicles) {
+  public void setNumberOfVehicles(@javax.annotation.Nonnull Integer numberOfVehicles) {
     this.numberOfVehicles = numberOfVehicles;
   }
 
 
-  public PlanSummary numberOfTransports(Integer numberOfTransports) {
+  public PlanSummary numberOfTransports(@javax.annotation.Nonnull Integer numberOfTransports) {
     this.numberOfTransports = numberOfTransports;
     return this;
   }
@@ -155,21 +163,21 @@ public class PlanSummary {
    * @return numberOfTransports
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_TRANSPORTS)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_TRANSPORTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getNumberOfTransports() {
     return numberOfTransports;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_TRANSPORTS)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_TRANSPORTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNumberOfTransports(Integer numberOfTransports) {
+  public void setNumberOfTransports(@javax.annotation.Nonnull Integer numberOfTransports) {
     this.numberOfTransports = numberOfTransports;
   }
 
 
-  public PlanSummary numberOfRoutes(Integer numberOfRoutes) {
+  public PlanSummary numberOfRoutes(@javax.annotation.Nonnull Integer numberOfRoutes) {
     this.numberOfRoutes = numberOfRoutes;
     return this;
   }
@@ -179,21 +187,21 @@ public class PlanSummary {
    * @return numberOfRoutes
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_ROUTES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_ROUTES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getNumberOfRoutes() {
     return numberOfRoutes;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NUMBER_OF_ROUTES)
+  @JsonProperty(value = JSON_PROPERTY_NUMBER_OF_ROUTES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNumberOfRoutes(Integer numberOfRoutes) {
+  public void setNumberOfRoutes(@javax.annotation.Nonnull Integer numberOfRoutes) {
     this.numberOfRoutes = numberOfRoutes;
   }
 
 
-  public PlanSummary description(String description) {
+  public PlanSummary description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -203,21 +211,21 @@ public class PlanSummary {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
     return description;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
 
-  public PlanSummary updateTime(OffsetDateTime updateTime) {
+  public PlanSummary updateTime(@javax.annotation.Nonnull OffsetDateTime updateTime) {
     this.updateTime = updateTime;
     return this;
   }
@@ -227,21 +235,21 @@ public class PlanSummary {
    * @return updateTime
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_UPDATE_TIME)
+  @JsonProperty(value = JSON_PROPERTY_UPDATE_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public OffsetDateTime getUpdateTime() {
     return updateTime;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UPDATE_TIME)
+  @JsonProperty(value = JSON_PROPERTY_UPDATE_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUpdateTime(OffsetDateTime updateTime) {
+  public void setUpdateTime(@javax.annotation.Nonnull OffsetDateTime updateTime) {
     this.updateTime = updateTime;
   }
 
 
-  public PlanSummary creationTime(OffsetDateTime creationTime) {
+  public PlanSummary creationTime(@javax.annotation.Nonnull OffsetDateTime creationTime) {
     this.creationTime = creationTime;
     return this;
   }
@@ -251,16 +259,16 @@ public class PlanSummary {
    * @return creationTime
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATION_TIME)
+  @JsonProperty(value = JSON_PROPERTY_CREATION_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public OffsetDateTime getCreationTime() {
     return creationTime;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATION_TIME)
+  @JsonProperty(value = JSON_PROPERTY_CREATION_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreationTime(OffsetDateTime creationTime) {
+  public void setCreationTime(@javax.annotation.Nonnull OffsetDateTime creationTime) {
     this.creationTime = creationTime;
   }
 
@@ -313,10 +321,7 @@ public class PlanSummary {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -353,42 +358,42 @@ public class PlanSummary {
 
     // add `id` to the URL query string
     if (getId() != null) {
-      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     // add `numberOfLocations` to the URL query string
     if (getNumberOfLocations() != null) {
-      joiner.add(String.format("%snumberOfLocations%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getNumberOfLocations()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%snumberOfLocations%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNumberOfLocations()))));
     }
 
     // add `numberOfVehicles` to the URL query string
     if (getNumberOfVehicles() != null) {
-      joiner.add(String.format("%snumberOfVehicles%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getNumberOfVehicles()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%snumberOfVehicles%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNumberOfVehicles()))));
     }
 
     // add `numberOfTransports` to the URL query string
     if (getNumberOfTransports() != null) {
-      joiner.add(String.format("%snumberOfTransports%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getNumberOfTransports()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%snumberOfTransports%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNumberOfTransports()))));
     }
 
     // add `numberOfRoutes` to the URL query string
     if (getNumberOfRoutes() != null) {
-      joiner.add(String.format("%snumberOfRoutes%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getNumberOfRoutes()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%snumberOfRoutes%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNumberOfRoutes()))));
     }
 
     // add `description` to the URL query string
     if (getDescription() != null) {
-      joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getDescription()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDescription()))));
     }
 
     // add `updateTime` to the URL query string
     if (getUpdateTime() != null) {
-      joiner.add(String.format("%supdateTime%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getUpdateTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%supdateTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUpdateTime()))));
     }
 
     // add `creationTime` to the URL query string
     if (getCreationTime() != null) {
-      joiner.add(String.format("%screationTime%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getCreationTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%screationTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreationTime()))));
     }
 
     return joiner.toString();

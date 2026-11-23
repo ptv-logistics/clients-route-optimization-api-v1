@@ -54,27 +54,33 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   Driver.JSON_PROPERTY_MAXIMUM_DRIVING_TIME,
   Driver.JSON_PROPERTY_MAXIMUM_TRAVEL_TIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class Driver {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_VEHICLE_ID = "vehicleId";
+  @javax.annotation.Nonnull
   private String vehicleId;
 
   public static final String JSON_PROPERTY_AVAILABILITIES = "availabilities";
+  @javax.annotation.Nullable
   private List<TimeInterval> availabilities;
 
   public static final String JSON_PROPERTY_WORKING_HOURS_PRESET = "workingHoursPreset";
   private JsonNullable<WorkingHoursPreset> workingHoursPreset = JsonNullable.<WorkingHoursPreset>undefined();
 
   public static final String JSON_PROPERTY_BREAK_RULE = "breakRule";
+  @javax.annotation.Nullable
   private BreakRule breakRule;
 
   public static final String JSON_PROPERTY_DAILY_REST_RULE = "dailyRestRule";
+  @javax.annotation.Nullable
   private DailyRestRule dailyRestRule;
 
   public static final String JSON_PROPERTY_WORK_LOGBOOK = "workLogbook";
+  @javax.annotation.Nullable
   private WorkLogbook workLogbook;
 
   public static final String JSON_PROPERTY_MAXIMUM_DRIVING_TIME = "maximumDrivingTime";
@@ -86,7 +92,7 @@ public class Driver {
   public Driver() { 
   }
 
-  public Driver id(String id) {
+  public Driver id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -96,21 +102,21 @@ public class Driver {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getId() {
     return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public Driver vehicleId(String vehicleId) {
+  public Driver vehicleId(@javax.annotation.Nonnull String vehicleId) {
     this.vehicleId = vehicleId;
     return this;
   }
@@ -120,21 +126,21 @@ public class Driver {
    * @return vehicleId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VEHICLE_ID)
+  @JsonProperty(value = JSON_PROPERTY_VEHICLE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getVehicleId() {
     return vehicleId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VEHICLE_ID)
+  @JsonProperty(value = JSON_PROPERTY_VEHICLE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVehicleId(String vehicleId) {
+  public void setVehicleId(@javax.annotation.Nonnull String vehicleId) {
     this.vehicleId = vehicleId;
   }
 
 
-  public Driver availabilities(List<TimeInterval> availabilities) {
+  public Driver availabilities(@javax.annotation.Nullable List<TimeInterval> availabilities) {
     this.availabilities = availabilities;
     return this;
   }
@@ -152,21 +158,21 @@ public class Driver {
    * @return availabilities
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AVAILABILITIES)
+  @JsonProperty(value = JSON_PROPERTY_AVAILABILITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<TimeInterval> getAvailabilities() {
     return availabilities;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AVAILABILITIES)
+  @JsonProperty(value = JSON_PROPERTY_AVAILABILITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAvailabilities(List<TimeInterval> availabilities) {
+  public void setAvailabilities(@javax.annotation.Nullable List<TimeInterval> availabilities) {
     this.availabilities = availabilities;
   }
 
 
-  public Driver workingHoursPreset(WorkingHoursPreset workingHoursPreset) {
+  public Driver workingHoursPreset(@javax.annotation.Nullable WorkingHoursPreset workingHoursPreset) {
     this.workingHoursPreset = JsonNullable.<WorkingHoursPreset>of(workingHoursPreset);
     return this;
   }
@@ -181,7 +187,7 @@ public class Driver {
         return workingHoursPreset.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_WORKING_HOURS_PRESET)
+  @JsonProperty(value = JSON_PROPERTY_WORKING_HOURS_PRESET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<WorkingHoursPreset> getWorkingHoursPreset_JsonNullable() {
@@ -193,12 +199,12 @@ public class Driver {
     this.workingHoursPreset = workingHoursPreset;
   }
 
-  public void setWorkingHoursPreset(WorkingHoursPreset workingHoursPreset) {
+  public void setWorkingHoursPreset(@javax.annotation.Nullable WorkingHoursPreset workingHoursPreset) {
     this.workingHoursPreset = JsonNullable.<WorkingHoursPreset>of(workingHoursPreset);
   }
 
 
-  public Driver breakRule(BreakRule breakRule) {
+  public Driver breakRule(@javax.annotation.Nullable BreakRule breakRule) {
     this.breakRule = breakRule;
     return this;
   }
@@ -208,21 +214,21 @@ public class Driver {
    * @return breakRule
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BREAK_RULE)
+  @JsonProperty(value = JSON_PROPERTY_BREAK_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BreakRule getBreakRule() {
     return breakRule;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BREAK_RULE)
+  @JsonProperty(value = JSON_PROPERTY_BREAK_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBreakRule(BreakRule breakRule) {
+  public void setBreakRule(@javax.annotation.Nullable BreakRule breakRule) {
     this.breakRule = breakRule;
   }
 
 
-  public Driver dailyRestRule(DailyRestRule dailyRestRule) {
+  public Driver dailyRestRule(@javax.annotation.Nullable DailyRestRule dailyRestRule) {
     this.dailyRestRule = dailyRestRule;
     return this;
   }
@@ -232,21 +238,21 @@ public class Driver {
    * @return dailyRestRule
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DAILY_REST_RULE)
+  @JsonProperty(value = JSON_PROPERTY_DAILY_REST_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DailyRestRule getDailyRestRule() {
     return dailyRestRule;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DAILY_REST_RULE)
+  @JsonProperty(value = JSON_PROPERTY_DAILY_REST_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDailyRestRule(DailyRestRule dailyRestRule) {
+  public void setDailyRestRule(@javax.annotation.Nullable DailyRestRule dailyRestRule) {
     this.dailyRestRule = dailyRestRule;
   }
 
 
-  public Driver workLogbook(WorkLogbook workLogbook) {
+  public Driver workLogbook(@javax.annotation.Nullable WorkLogbook workLogbook) {
     this.workLogbook = workLogbook;
     return this;
   }
@@ -256,21 +262,21 @@ public class Driver {
    * @return workLogbook
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WORK_LOGBOOK)
+  @JsonProperty(value = JSON_PROPERTY_WORK_LOGBOOK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public WorkLogbook getWorkLogbook() {
     return workLogbook;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WORK_LOGBOOK)
+  @JsonProperty(value = JSON_PROPERTY_WORK_LOGBOOK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWorkLogbook(WorkLogbook workLogbook) {
+  public void setWorkLogbook(@javax.annotation.Nullable WorkLogbook workLogbook) {
     this.workLogbook = workLogbook;
   }
 
 
-  public Driver maximumDrivingTime(Integer maximumDrivingTime) {
+  public Driver maximumDrivingTime(@javax.annotation.Nullable Integer maximumDrivingTime) {
     this.maximumDrivingTime = JsonNullable.<Integer>of(maximumDrivingTime);
     return this;
   }
@@ -286,7 +292,7 @@ public class Driver {
         return maximumDrivingTime.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_DRIVING_TIME)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_DRIVING_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getMaximumDrivingTime_JsonNullable() {
@@ -298,12 +304,12 @@ public class Driver {
     this.maximumDrivingTime = maximumDrivingTime;
   }
 
-  public void setMaximumDrivingTime(Integer maximumDrivingTime) {
+  public void setMaximumDrivingTime(@javax.annotation.Nullable Integer maximumDrivingTime) {
     this.maximumDrivingTime = JsonNullable.<Integer>of(maximumDrivingTime);
   }
 
 
-  public Driver maximumTravelTime(Integer maximumTravelTime) {
+  public Driver maximumTravelTime(@javax.annotation.Nullable Integer maximumTravelTime) {
     this.maximumTravelTime = JsonNullable.<Integer>of(maximumTravelTime);
     return this;
   }
@@ -319,7 +325,7 @@ public class Driver {
         return maximumTravelTime.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_MAXIMUM_TRAVEL_TIME)
+  @JsonProperty(value = JSON_PROPERTY_MAXIMUM_TRAVEL_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getMaximumTravelTime_JsonNullable() {
@@ -331,7 +337,7 @@ public class Driver {
     this.maximumTravelTime = maximumTravelTime;
   }
 
-  public void setMaximumTravelTime(Integer maximumTravelTime) {
+  public void setMaximumTravelTime(@javax.annotation.Nullable Integer maximumTravelTime) {
     this.maximumTravelTime = JsonNullable.<Integer>of(maximumTravelTime);
   }
 
@@ -397,10 +403,7 @@ public class Driver {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -437,27 +440,27 @@ public class Driver {
 
     // add `id` to the URL query string
     if (getId() != null) {
-      joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     // add `vehicleId` to the URL query string
     if (getVehicleId() != null) {
-      joiner.add(String.format("%svehicleId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getVehicleId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%svehicleId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVehicleId()))));
     }
 
     // add `availabilities` to the URL query string
     if (getAvailabilities() != null) {
       for (int i = 0; i < getAvailabilities().size(); i++) {
         if (getAvailabilities().get(i) != null) {
-          joiner.add(getAvailabilities().get(i).toUrlQueryString(String.format("%savailabilities%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getAvailabilities().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%savailabilities%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
 
     // add `workingHoursPreset` to the URL query string
     if (getWorkingHoursPreset() != null) {
-      joiner.add(String.format("%sworkingHoursPreset%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getWorkingHoursPreset()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sworkingHoursPreset%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWorkingHoursPreset()))));
     }
 
     // add `breakRule` to the URL query string
@@ -477,12 +480,12 @@ public class Driver {
 
     // add `maximumDrivingTime` to the URL query string
     if (getMaximumDrivingTime() != null) {
-      joiner.add(String.format("%smaximumDrivingTime%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getMaximumDrivingTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaximumDrivingTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaximumDrivingTime()))));
     }
 
     // add `maximumTravelTime` to the URL query string
     if (getMaximumTravelTime() != null) {
-      joiner.add(String.format("%smaximumTravelTime%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getMaximumTravelTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaximumTravelTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaximumTravelTime()))));
     }
 
     return joiner.toString();

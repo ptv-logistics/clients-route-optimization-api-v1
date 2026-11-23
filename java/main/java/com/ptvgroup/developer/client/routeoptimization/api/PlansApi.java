@@ -15,6 +15,7 @@ package com.ptvgroup.developer.client.routeoptimization.api;
 import com.ptvgroup.developer.client.routeoptimization.ApiClient;
 import com.ptvgroup.developer.client.routeoptimization.ApiException;
 import com.ptvgroup.developer.client.routeoptimization.ApiResponse;
+import com.ptvgroup.developer.client.routeoptimization.Configuration;
 import com.ptvgroup.developer.client.routeoptimization.Pair;
 
 import com.ptvgroup.developer.client.routeoptimization.model.ErrorResponse;
@@ -47,18 +48,38 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class PlansApi {
+  /**
+   * Utility class for extending HttpRequest.Builder functionality.
+   */
+  private static class HttpRequestBuilderExtensions {
+    /**
+     * Adds additional headers to the provided HttpRequest.Builder. Useful for adding method/endpoint specific headers.
+     *
+     * @param builder the HttpRequest.Builder to which headers will be added
+     * @param headers a map of header names and values to add; may be null
+     * @return the same HttpRequest.Builder instance with the additional headers set
+     */
+    static HttpRequest.Builder withAdditionalHeaders(HttpRequest.Builder builder, Map<String, String> headers) {
+        if (headers != null) {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                builder.header(entry.getKey(), entry.getValue());
+            }
+        }
+        return builder;
+    }
+  }
   private final HttpClient memberVarHttpClient;
   private final ObjectMapper memberVarObjectMapper;
   private final String memberVarBaseUri;
   private final Consumer<HttpRequest.Builder> memberVarInterceptor;
   private final Duration memberVarReadTimeout;
   private final Consumer<HttpResponse<InputStream>> memberVarResponseInterceptor;
-  private final Consumer<HttpResponse<String>> memberVarAsyncResponseInterceptor;
+  private final Consumer<HttpResponse<InputStream>> memberVarAsyncResponseInterceptor;
 
   public PlansApi() {
-    this(new ApiClient());
+    this(Configuration.getDefaultApiClient());
   }
 
   public PlansApi(ApiClient apiClient) {
@@ -71,8 +92,17 @@ public class PlansApi {
     memberVarAsyncResponseInterceptor = apiClient.getAsyncResponseInterceptor();
   }
 
+
   protected ApiException getApiException(String operationId, HttpResponse<InputStream> response) throws IOException {
-    String body = response.body() == null ? null : new String(response.body().readAllBytes());
+    InputStream responseBody = ApiClient.getResponseBody(response);
+    String body = null;
+    try {
+      body = responseBody == null ? null : new String(responseBody.readAllBytes());
+    } finally {
+      if (responseBody != null) {
+        responseBody.close();
+      }
+    }
     String message = formatExceptionMessage(operationId, response.statusCode(), body);
     return new ApiException(response.statusCode(), message, response.headers(), body);
   }
@@ -85,14 +115,77 @@ public class PlansApi {
   }
 
   /**
+   * Download file from the given response.
+   *
+   * @param response Response
+   * @return File
+   * @throws ApiException If fail to read file content from response and write to disk
+   */
+  public File downloadFileFromResponse(HttpResponse<InputStream> response, InputStream responseBody) throws ApiException {
+    if (responseBody == null) {
+      throw new ApiException(new IOException("Response body is empty"));
+    }
+    try {
+      File file = prepareDownloadFile(response);
+      java.nio.file.Files.copy(responseBody, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+      return file;
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+  }
+
+  /**
+   * <p>Prepare the file for download from the response.</p>
+   *
+   * @param response a {@link java.net.http.HttpResponse} object.
+   * @return a {@link java.io.File} object.
+   * @throws java.io.IOException if any.
+   */
+  private File prepareDownloadFile(HttpResponse<InputStream> response) throws IOException {
+    String filename = null;
+    java.util.Optional<String> contentDisposition = response.headers().firstValue("Content-Disposition");
+    if (contentDisposition.isPresent() && !"".equals(contentDisposition.get())) {
+      // Get filename from the Content-Disposition header.
+      java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?");
+      java.util.regex.Matcher matcher = pattern.matcher(contentDisposition.get());
+      if (matcher.find())
+        filename = matcher.group(1);
+    }
+    File file = null;
+    if (filename != null) {
+      java.nio.file.Path tempDir = java.nio.file.Files.createTempDirectory("swagger-gen-native");
+      java.nio.file.Path filePath = java.nio.file.Files.createFile(tempDir.resolve(filename));
+      file = filePath.toFile();
+      tempDir.toFile().deleteOnExit();   // best effort cleanup
+      file.deleteOnExit(); // best effort cleanup
+    } else {
+      file = java.nio.file.Files.createTempFile("download-", "").toFile();
+      file.deleteOnExit(); // best effort cleanup
+    }
+    return file;
+  }
+
+  /**
    * 
    * Creates a new plan containing parts like vehicles and transports which should be used for a subsequent optimization. It persists and returns a slightly modified plan including a server generated ID that can be used for later retrieval. This returned plan can be used for automated route optimization via Operations API.
    * @param plan The plan containing vehicles and transports. The returned plan in the response body is extended by a server generated ID and details of the calculated routes. (required)
    * @return Plan
    * @throws ApiException if fails to make API call
    */
-  public Plan createPlan(Plan plan) throws ApiException {
-    ApiResponse<Plan> localVarResponse = createPlanWithHttpInfo(plan);
+  public Plan createPlan(@javax.annotation.Nonnull Plan plan) throws ApiException {
+    return createPlan(plan, null);
+  }
+
+  /**
+   * 
+   * Creates a new plan containing parts like vehicles and transports which should be used for a subsequent optimization. It persists and returns a slightly modified plan including a server generated ID that can be used for later retrieval. This returned plan can be used for automated route optimization via Operations API.
+   * @param plan The plan containing vehicles and transports. The returned plan in the response body is extended by a server generated ID and details of the calculated routes. (required)
+   * @param headers Optional headers to include in the request
+   * @return Plan
+   * @throws ApiException if fails to make API call
+   */
+  public Plan createPlan(@javax.annotation.Nonnull Plan plan, Map<String, String> headers) throws ApiException {
+    ApiResponse<Plan> localVarResponse = createPlanWithHttpInfo(plan, headers);
     return localVarResponse.getData();
   }
 
@@ -103,8 +196,20 @@ public class PlansApi {
    * @return ApiResponse&lt;Plan&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Plan> createPlanWithHttpInfo(Plan plan) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = createPlanRequestBuilder(plan);
+  public ApiResponse<Plan> createPlanWithHttpInfo(@javax.annotation.Nonnull Plan plan) throws ApiException {
+    return createPlanWithHttpInfo(plan, null);
+  }
+
+  /**
+   * 
+   * Creates a new plan containing parts like vehicles and transports which should be used for a subsequent optimization. It persists and returns a slightly modified plan including a server generated ID that can be used for later retrieval. This returned plan can be used for automated route optimization via Operations API.
+   * @param plan The plan containing vehicles and transports. The returned plan in the response body is extended by a server generated ID and details of the calculated routes. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Plan&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Plan> createPlanWithHttpInfo(@javax.annotation.Nonnull Plan plan, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createPlanRequestBuilder(plan, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -112,16 +217,35 @@ public class PlansApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("createPlan", localVarResponse);
         }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<Plan>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        Plan responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Plan>() {});
+        
+
         return new ApiResponse<Plan>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<Plan>() {}) // closes the InputStream
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
         );
       } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -132,7 +256,7 @@ public class PlansApi {
     }
   }
 
-  private HttpRequest.Builder createPlanRequestBuilder(Plan plan) throws ApiException {
+  private HttpRequest.Builder createPlanRequestBuilder(@javax.annotation.Nonnull Plan plan, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'plan' is set
     if (plan == null) {
       throw new ApiException(400, "Missing the required parameter 'plan' when calling createPlan");
@@ -156,6 +280,8 @@ public class PlansApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -168,8 +294,19 @@ public class PlansApi {
    * @param id ID of the plan to be deleted. (required)
    * @throws ApiException if fails to make API call
    */
-  public void deletePlan(UUID id) throws ApiException {
-    deletePlanWithHttpInfo(id);
+  public void deletePlan(@javax.annotation.Nonnull UUID id) throws ApiException {
+    deletePlan(id, null);
+  }
+
+  /**
+   * 
+   * Deletes a plan identified by the ID. Also cancels a currently running optimization of the plan.
+   * @param id ID of the plan to be deleted. (required)
+   * @param headers Optional headers to include in the request
+   * @throws ApiException if fails to make API call
+   */
+  public void deletePlan(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    deletePlanWithHttpInfo(id, headers);
   }
 
   /**
@@ -179,8 +316,20 @@ public class PlansApi {
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deletePlanWithHttpInfo(UUID id) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = deletePlanRequestBuilder(id);
+  public ApiResponse<Void> deletePlanWithHttpInfo(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return deletePlanWithHttpInfo(id, null);
+  }
+
+  /**
+   * 
+   * Deletes a plan identified by the ID. Also cancels a currently running optimization of the plan.
+   * @param id ID of the plan to be deleted. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deletePlanWithHttpInfo(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deletePlanRequestBuilder(id, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -188,21 +337,24 @@ public class PlansApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("deletePlan", localVarResponse);
         }
-        return new ApiResponse<Void>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          null
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<>(
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            null
         );
       } finally {
-        // Drain the InputStream
-        while (localVarResponse.body().read() != -1) {
-            // Ignore
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
         }
-        localVarResponse.body().close();
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -213,7 +365,7 @@ public class PlansApi {
     }
   }
 
-  private HttpRequest.Builder deletePlanRequestBuilder(UUID id) throws ApiException {
+  private HttpRequest.Builder deletePlanRequestBuilder(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling deletePlan");
@@ -232,6 +384,8 @@ public class PlansApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -245,8 +399,20 @@ public class PlansApi {
    * @return Plan
    * @throws ApiException if fails to make API call
    */
-  public Plan getPlan(UUID id) throws ApiException {
-    ApiResponse<Plan> localVarResponse = getPlanWithHttpInfo(id);
+  public Plan getPlan(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return getPlan(id, null);
+  }
+
+  /**
+   * 
+   * Retrieves a plan identified by the ID.
+   * @param id ID of the requested plan. (required)
+   * @param headers Optional headers to include in the request
+   * @return Plan
+   * @throws ApiException if fails to make API call
+   */
+  public Plan getPlan(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    ApiResponse<Plan> localVarResponse = getPlanWithHttpInfo(id, headers);
     return localVarResponse.getData();
   }
 
@@ -257,8 +423,20 @@ public class PlansApi {
    * @return ApiResponse&lt;Plan&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Plan> getPlanWithHttpInfo(UUID id) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getPlanRequestBuilder(id);
+  public ApiResponse<Plan> getPlanWithHttpInfo(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return getPlanWithHttpInfo(id, null);
+  }
+
+  /**
+   * 
+   * Retrieves a plan identified by the ID.
+   * @param id ID of the requested plan. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Plan&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Plan> getPlanWithHttpInfo(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getPlanRequestBuilder(id, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -266,16 +444,35 @@ public class PlansApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("getPlan", localVarResponse);
         }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<Plan>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        Plan responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Plan>() {});
+        
+
         return new ApiResponse<Plan>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<Plan>() {}) // closes the InputStream
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
         );
       } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -286,7 +483,7 @@ public class PlansApi {
     }
   }
 
-  private HttpRequest.Builder getPlanRequestBuilder(UUID id) throws ApiException {
+  private HttpRequest.Builder getPlanRequestBuilder(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getPlan");
@@ -305,6 +502,8 @@ public class PlansApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -318,7 +517,18 @@ public class PlansApi {
    * @throws ApiException if fails to make API call
    */
   public PlanSummaries getPlanSummaries() throws ApiException {
-    ApiResponse<PlanSummaries> localVarResponse = getPlanSummariesWithHttpInfo();
+    return getPlanSummaries(null);
+  }
+
+  /**
+   * 
+   * Retrieves a list of summaries for at most 1000 least recently updated available plans.
+   * @param headers Optional headers to include in the request
+   * @return PlanSummaries
+   * @throws ApiException if fails to make API call
+   */
+  public PlanSummaries getPlanSummaries(Map<String, String> headers) throws ApiException {
+    ApiResponse<PlanSummaries> localVarResponse = getPlanSummariesWithHttpInfo(headers);
     return localVarResponse.getData();
   }
 
@@ -329,7 +539,18 @@ public class PlansApi {
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<PlanSummaries> getPlanSummariesWithHttpInfo() throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getPlanSummariesRequestBuilder();
+    return getPlanSummariesWithHttpInfo(null);
+  }
+
+  /**
+   * 
+   * Retrieves a list of summaries for at most 1000 least recently updated available plans.
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PlanSummaries&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PlanSummaries> getPlanSummariesWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getPlanSummariesRequestBuilder(headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -337,16 +558,35 @@ public class PlansApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("getPlanSummaries", localVarResponse);
         }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PlanSummaries>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PlanSummaries responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PlanSummaries>() {});
+        
+
         return new ApiResponse<PlanSummaries>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<PlanSummaries>() {}) // closes the InputStream
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
         );
       } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -357,7 +597,7 @@ public class PlansApi {
     }
   }
 
-  private HttpRequest.Builder getPlanSummariesRequestBuilder() throws ApiException {
+  private HttpRequest.Builder getPlanSummariesRequestBuilder(Map<String, String> headers) throws ApiException {
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
@@ -371,6 +611,8 @@ public class PlansApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }

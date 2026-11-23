@@ -42,27 +42,32 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   Operation.JSON_PROPERTY_ELAPSED_TIME,
   Operation.JSON_PROPERTY_ERROR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class Operation {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private OperationStatus status;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @javax.annotation.Nonnull
   private OffsetDateTime startTime;
 
   public static final String JSON_PROPERTY_ELAPSED_TIME = "elapsedTime";
+  @javax.annotation.Nonnull
   private Integer elapsedTime;
 
   public static final String JSON_PROPERTY_ERROR = "error";
+  @javax.annotation.Nullable
   private ErrorResponse error;
 
   public Operation() { 
   }
 
-  public Operation name(String name) {
+  public Operation name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -72,21 +77,21 @@ public class Operation {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
     return name;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public Operation status(OperationStatus status) {
+  public Operation status(@javax.annotation.Nonnull OperationStatus status) {
     this.status = status;
     return this;
   }
@@ -96,21 +101,21 @@ public class Operation {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public OperationStatus getStatus() {
     return status;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(OperationStatus status) {
+  public void setStatus(@javax.annotation.Nonnull OperationStatus status) {
     this.status = status;
   }
 
 
-  public Operation startTime(OffsetDateTime startTime) {
+  public Operation startTime(@javax.annotation.Nonnull OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -120,21 +125,21 @@ public class Operation {
    * @return startTime
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_START_TIME)
+  @JsonProperty(value = JSON_PROPERTY_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public OffsetDateTime getStartTime() {
     return startTime;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_START_TIME)
+  @JsonProperty(value = JSON_PROPERTY_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStartTime(OffsetDateTime startTime) {
+  public void setStartTime(@javax.annotation.Nonnull OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
 
-  public Operation elapsedTime(Integer elapsedTime) {
+  public Operation elapsedTime(@javax.annotation.Nonnull Integer elapsedTime) {
     this.elapsedTime = elapsedTime;
     return this;
   }
@@ -144,21 +149,21 @@ public class Operation {
    * @return elapsedTime
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ELAPSED_TIME)
+  @JsonProperty(value = JSON_PROPERTY_ELAPSED_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getElapsedTime() {
     return elapsedTime;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ELAPSED_TIME)
+  @JsonProperty(value = JSON_PROPERTY_ELAPSED_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setElapsedTime(Integer elapsedTime) {
+  public void setElapsedTime(@javax.annotation.Nonnull Integer elapsedTime) {
     this.elapsedTime = elapsedTime;
   }
 
 
-  public Operation error(ErrorResponse error) {
+  public Operation error(@javax.annotation.Nullable ErrorResponse error) {
     this.error = error;
     return this;
   }
@@ -168,16 +173,16 @@ public class Operation {
    * @return error
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ErrorResponse getError() {
     return error;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(ErrorResponse error) {
+  public void setError(@javax.annotation.Nullable ErrorResponse error) {
     this.error = error;
   }
 
@@ -224,10 +229,7 @@ public class Operation {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -264,22 +266,22 @@ public class Operation {
 
     // add `name` to the URL query string
     if (getName() != null) {
-      joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getName()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
     // add `status` to the URL query string
     if (getStatus() != null) {
-      joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getStatus()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
     }
 
     // add `startTime` to the URL query string
     if (getStartTime() != null) {
-      joiner.add(String.format("%sstartTime%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getStartTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstartTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStartTime()))));
     }
 
     // add `elapsedTime` to the URL query string
     if (getElapsedTime() != null) {
-      joiner.add(String.format("%selapsedTime%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getElapsedTime()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%selapsedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getElapsedTime()))));
     }
 
     // add `error` to the URL query string

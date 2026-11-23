@@ -43,12 +43,14 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   CustomerLocationAttributes.JSON_PROPERTY_POSITION_IN_TRIP,
   CustomerLocationAttributes.JSON_PROPERTY_TRIP_SECTION_NUMBER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class CustomerLocationAttributes {
   public static final String JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP = "serviceTimePerTransportStop";
+  @javax.annotation.Nullable
   private Integer serviceTimePerTransportStop = 0;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @javax.annotation.Nullable
   private String customerId;
 
   public static final String JSON_PROPERTY_POSITION_IN_TRIP = "positionInTrip";
@@ -60,7 +62,7 @@ public class CustomerLocationAttributes {
   public CustomerLocationAttributes() { 
   }
 
-  public CustomerLocationAttributes serviceTimePerTransportStop(Integer serviceTimePerTransportStop) {
+  public CustomerLocationAttributes serviceTimePerTransportStop(@javax.annotation.Nullable Integer serviceTimePerTransportStop) {
     this.serviceTimePerTransportStop = serviceTimePerTransportStop;
     return this;
   }
@@ -71,21 +73,21 @@ public class CustomerLocationAttributes {
    * @return serviceTimePerTransportStop
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP)
+  @JsonProperty(value = JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getServiceTimePerTransportStop() {
     return serviceTimePerTransportStop;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP)
+  @JsonProperty(value = JSON_PROPERTY_SERVICE_TIME_PER_TRANSPORT_STOP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServiceTimePerTransportStop(Integer serviceTimePerTransportStop) {
+  public void setServiceTimePerTransportStop(@javax.annotation.Nullable Integer serviceTimePerTransportStop) {
     this.serviceTimePerTransportStop = serviceTimePerTransportStop;
   }
 
 
-  public CustomerLocationAttributes customerId(String customerId) {
+  public CustomerLocationAttributes customerId(@javax.annotation.Nullable String customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -95,21 +97,21 @@ public class CustomerLocationAttributes {
    * @return customerId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CUSTOMER_ID)
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCustomerId() {
     return customerId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CUSTOMER_ID)
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerId(String customerId) {
+  public void setCustomerId(@javax.annotation.Nullable String customerId) {
     this.customerId = customerId;
   }
 
 
-  public CustomerLocationAttributes positionInTrip(PositionInTrip positionInTrip) {
+  public CustomerLocationAttributes positionInTrip(@javax.annotation.Nullable PositionInTrip positionInTrip) {
     this.positionInTrip = JsonNullable.<PositionInTrip>of(positionInTrip);
     return this;
   }
@@ -124,7 +126,7 @@ public class CustomerLocationAttributes {
         return positionInTrip.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_POSITION_IN_TRIP)
+  @JsonProperty(value = JSON_PROPERTY_POSITION_IN_TRIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<PositionInTrip> getPositionInTrip_JsonNullable() {
@@ -136,12 +138,12 @@ public class CustomerLocationAttributes {
     this.positionInTrip = positionInTrip;
   }
 
-  public void setPositionInTrip(PositionInTrip positionInTrip) {
+  public void setPositionInTrip(@javax.annotation.Nullable PositionInTrip positionInTrip) {
     this.positionInTrip = JsonNullable.<PositionInTrip>of(positionInTrip);
   }
 
 
-  public CustomerLocationAttributes tripSectionNumber(Integer tripSectionNumber) {
+  public CustomerLocationAttributes tripSectionNumber(@javax.annotation.Nullable Integer tripSectionNumber) {
     this.tripSectionNumber = JsonNullable.<Integer>of(tripSectionNumber);
     return this;
   }
@@ -157,7 +159,7 @@ public class CustomerLocationAttributes {
         return tripSectionNumber.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_TRIP_SECTION_NUMBER)
+  @JsonProperty(value = JSON_PROPERTY_TRIP_SECTION_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Integer> getTripSectionNumber_JsonNullable() {
@@ -169,7 +171,7 @@ public class CustomerLocationAttributes {
     this.tripSectionNumber = tripSectionNumber;
   }
 
-  public void setTripSectionNumber(Integer tripSectionNumber) {
+  public void setTripSectionNumber(@javax.annotation.Nullable Integer tripSectionNumber) {
     this.tripSectionNumber = JsonNullable.<Integer>of(tripSectionNumber);
   }
 
@@ -225,10 +227,7 @@ public class CustomerLocationAttributes {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -265,22 +264,22 @@ public class CustomerLocationAttributes {
 
     // add `serviceTimePerTransportStop` to the URL query string
     if (getServiceTimePerTransportStop() != null) {
-      joiner.add(String.format("%sserviceTimePerTransportStop%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getServiceTimePerTransportStop()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sserviceTimePerTransportStop%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getServiceTimePerTransportStop()))));
     }
 
     // add `customerId` to the URL query string
     if (getCustomerId() != null) {
-      joiner.add(String.format("%scustomerId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getCustomerId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerId()))));
     }
 
     // add `positionInTrip` to the URL query string
     if (getPositionInTrip() != null) {
-      joiner.add(String.format("%spositionInTrip%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getPositionInTrip()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%spositionInTrip%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPositionInTrip()))));
     }
 
     // add `tripSectionNumber` to the URL query string
     if (getTripSectionNumber() != null) {
-      joiner.add(String.format("%stripSectionNumber%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getTripSectionNumber()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%stripSectionNumber%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTripSectionNumber()))));
     }
 
     return joiner.toString();

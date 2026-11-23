@@ -40,21 +40,24 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   PlanningRestrictions.JSON_PROPERTY_SINGLE_DEPOT_PER_ROUTE,
   PlanningRestrictions.JSON_PROPERTY_MIXED_LOADING_PROHIBITIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class PlanningRestrictions {
   public static final String JSON_PROPERTY_SINGLE_TRIP_PER_ROUTE = "singleTripPerRoute";
+  @javax.annotation.Nullable
   private Boolean singleTripPerRoute = false;
 
   public static final String JSON_PROPERTY_SINGLE_DEPOT_PER_ROUTE = "singleDepotPerRoute";
+  @javax.annotation.Nullable
   private Boolean singleDepotPerRoute = false;
 
   public static final String JSON_PROPERTY_MIXED_LOADING_PROHIBITIONS = "mixedLoadingProhibitions";
+  @javax.annotation.Nullable
   private List<MixedLoadingProhibition> mixedLoadingProhibitions;
 
   public PlanningRestrictions() { 
   }
 
-  public PlanningRestrictions singleTripPerRoute(Boolean singleTripPerRoute) {
+  public PlanningRestrictions singleTripPerRoute(@javax.annotation.Nullable Boolean singleTripPerRoute) {
     this.singleTripPerRoute = singleTripPerRoute;
     return this;
   }
@@ -64,21 +67,21 @@ public class PlanningRestrictions {
    * @return singleTripPerRoute
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SINGLE_TRIP_PER_ROUTE)
+  @JsonProperty(value = JSON_PROPERTY_SINGLE_TRIP_PER_ROUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSingleTripPerRoute() {
     return singleTripPerRoute;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SINGLE_TRIP_PER_ROUTE)
+  @JsonProperty(value = JSON_PROPERTY_SINGLE_TRIP_PER_ROUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSingleTripPerRoute(Boolean singleTripPerRoute) {
+  public void setSingleTripPerRoute(@javax.annotation.Nullable Boolean singleTripPerRoute) {
     this.singleTripPerRoute = singleTripPerRoute;
   }
 
 
-  public PlanningRestrictions singleDepotPerRoute(Boolean singleDepotPerRoute) {
+  public PlanningRestrictions singleDepotPerRoute(@javax.annotation.Nullable Boolean singleDepotPerRoute) {
     this.singleDepotPerRoute = singleDepotPerRoute;
     return this;
   }
@@ -88,21 +91,21 @@ public class PlanningRestrictions {
    * @return singleDepotPerRoute
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SINGLE_DEPOT_PER_ROUTE)
+  @JsonProperty(value = JSON_PROPERTY_SINGLE_DEPOT_PER_ROUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSingleDepotPerRoute() {
     return singleDepotPerRoute;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SINGLE_DEPOT_PER_ROUTE)
+  @JsonProperty(value = JSON_PROPERTY_SINGLE_DEPOT_PER_ROUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSingleDepotPerRoute(Boolean singleDepotPerRoute) {
+  public void setSingleDepotPerRoute(@javax.annotation.Nullable Boolean singleDepotPerRoute) {
     this.singleDepotPerRoute = singleDepotPerRoute;
   }
 
 
-  public PlanningRestrictions mixedLoadingProhibitions(List<MixedLoadingProhibition> mixedLoadingProhibitions) {
+  public PlanningRestrictions mixedLoadingProhibitions(@javax.annotation.Nullable List<MixedLoadingProhibition> mixedLoadingProhibitions) {
     this.mixedLoadingProhibitions = mixedLoadingProhibitions;
     return this;
   }
@@ -120,16 +123,16 @@ public class PlanningRestrictions {
    * @return mixedLoadingProhibitions
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MIXED_LOADING_PROHIBITIONS)
+  @JsonProperty(value = JSON_PROPERTY_MIXED_LOADING_PROHIBITIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<MixedLoadingProhibition> getMixedLoadingProhibitions() {
     return mixedLoadingProhibitions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MIXED_LOADING_PROHIBITIONS)
+  @JsonProperty(value = JSON_PROPERTY_MIXED_LOADING_PROHIBITIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMixedLoadingProhibitions(List<MixedLoadingProhibition> mixedLoadingProhibitions) {
+  public void setMixedLoadingProhibitions(@javax.annotation.Nullable List<MixedLoadingProhibition> mixedLoadingProhibitions) {
     this.mixedLoadingProhibitions = mixedLoadingProhibitions;
   }
 
@@ -172,10 +175,7 @@ public class PlanningRestrictions {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -212,20 +212,20 @@ public class PlanningRestrictions {
 
     // add `singleTripPerRoute` to the URL query string
     if (getSingleTripPerRoute() != null) {
-      joiner.add(String.format("%ssingleTripPerRoute%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getSingleTripPerRoute()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssingleTripPerRoute%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSingleTripPerRoute()))));
     }
 
     // add `singleDepotPerRoute` to the URL query string
     if (getSingleDepotPerRoute() != null) {
-      joiner.add(String.format("%ssingleDepotPerRoute%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getSingleDepotPerRoute()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssingleDepotPerRoute%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSingleDepotPerRoute()))));
     }
 
     // add `mixedLoadingProhibitions` to the URL query string
     if (getMixedLoadingProhibitions() != null) {
       for (int i = 0; i < getMixedLoadingProhibitions().size(); i++) {
         if (getMixedLoadingProhibitions().get(i) != null) {
-          joiner.add(getMixedLoadingProhibitions().get(i).toUrlQueryString(String.format("%smixedLoadingProhibitions%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getMixedLoadingProhibitions().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%smixedLoadingProhibitions%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

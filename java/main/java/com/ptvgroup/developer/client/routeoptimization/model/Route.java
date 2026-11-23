@@ -41,15 +41,18 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   Route.JSON_PROPERTY_STOPS,
   Route.JSON_PROPERTY_REPORT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class Route {
   public static final String JSON_PROPERTY_VEHICLE_ID = "vehicleId";
+  @javax.annotation.Nonnull
   private String vehicleId;
 
   public static final String JSON_PROPERTY_STOPS = "stops";
+  @javax.annotation.Nonnull
   private List<Stop> stops;
 
   public static final String JSON_PROPERTY_REPORT = "report";
+  @javax.annotation.Nonnull
   private RouteReport report;
 
   public Route() { 
@@ -63,7 +66,7 @@ public class Route {
     this.report = report;
   }
 
-  public Route vehicleId(String vehicleId) {
+  public Route vehicleId(@javax.annotation.Nonnull String vehicleId) {
     this.vehicleId = vehicleId;
     return this;
   }
@@ -73,21 +76,21 @@ public class Route {
    * @return vehicleId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VEHICLE_ID)
+  @JsonProperty(value = JSON_PROPERTY_VEHICLE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getVehicleId() {
     return vehicleId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VEHICLE_ID)
+  @JsonProperty(value = JSON_PROPERTY_VEHICLE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVehicleId(String vehicleId) {
+  public void setVehicleId(@javax.annotation.Nonnull String vehicleId) {
     this.vehicleId = vehicleId;
   }
 
 
-  public Route stops(List<Stop> stops) {
+  public Route stops(@javax.annotation.Nonnull List<Stop> stops) {
     this.stops = stops;
     return this;
   }
@@ -105,16 +108,16 @@ public class Route {
    * @return stops
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STOPS)
+  @JsonProperty(value = JSON_PROPERTY_STOPS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<Stop> getStops() {
     return stops;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STOPS)
+  @JsonProperty(value = JSON_PROPERTY_STOPS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStops(List<Stop> stops) {
+  public void setStops(@javax.annotation.Nonnull List<Stop> stops) {
     this.stops = stops;
   }
 
@@ -124,7 +127,7 @@ public class Route {
    * @return report
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REPORT)
+  @JsonProperty(value = JSON_PROPERTY_REPORT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public RouteReport getReport() {
     return report;
@@ -171,10 +174,7 @@ public class Route {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -211,15 +211,15 @@ public class Route {
 
     // add `vehicleId` to the URL query string
     if (getVehicleId() != null) {
-      joiner.add(String.format("%svehicleId%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getVehicleId()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%svehicleId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVehicleId()))));
     }
 
     // add `stops` to the URL query string
     if (getStops() != null) {
       for (int i = 0; i < getStops().size(); i++) {
         if (getStops().get(i) != null) {
-          joiner.add(getStops().get(i).toUrlQueryString(String.format("%sstops%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getStops().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sstops%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

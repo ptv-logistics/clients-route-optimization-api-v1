@@ -15,6 +15,7 @@ package com.ptvgroup.developer.client.routeoptimization.api;
 import com.ptvgroup.developer.client.routeoptimization.ApiClient;
 import com.ptvgroup.developer.client.routeoptimization.ApiException;
 import com.ptvgroup.developer.client.routeoptimization.ApiResponse;
+import com.ptvgroup.developer.client.routeoptimization.Configuration;
 import com.ptvgroup.developer.client.routeoptimization.Pair;
 
 import com.ptvgroup.developer.client.routeoptimization.model.ErrorResponse;
@@ -48,18 +49,38 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class OperationsApi {
+  /**
+   * Utility class for extending HttpRequest.Builder functionality.
+   */
+  private static class HttpRequestBuilderExtensions {
+    /**
+     * Adds additional headers to the provided HttpRequest.Builder. Useful for adding method/endpoint specific headers.
+     *
+     * @param builder the HttpRequest.Builder to which headers will be added
+     * @param headers a map of header names and values to add; may be null
+     * @return the same HttpRequest.Builder instance with the additional headers set
+     */
+    static HttpRequest.Builder withAdditionalHeaders(HttpRequest.Builder builder, Map<String, String> headers) {
+        if (headers != null) {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                builder.header(entry.getKey(), entry.getValue());
+            }
+        }
+        return builder;
+    }
+  }
   private final HttpClient memberVarHttpClient;
   private final ObjectMapper memberVarObjectMapper;
   private final String memberVarBaseUri;
   private final Consumer<HttpRequest.Builder> memberVarInterceptor;
   private final Duration memberVarReadTimeout;
   private final Consumer<HttpResponse<InputStream>> memberVarResponseInterceptor;
-  private final Consumer<HttpResponse<String>> memberVarAsyncResponseInterceptor;
+  private final Consumer<HttpResponse<InputStream>> memberVarAsyncResponseInterceptor;
 
   public OperationsApi() {
-    this(new ApiClient());
+    this(Configuration.getDefaultApiClient());
   }
 
   public OperationsApi(ApiClient apiClient) {
@@ -72,8 +93,17 @@ public class OperationsApi {
     memberVarAsyncResponseInterceptor = apiClient.getAsyncResponseInterceptor();
   }
 
+
   protected ApiException getApiException(String operationId, HttpResponse<InputStream> response) throws IOException {
-    String body = response.body() == null ? null : new String(response.body().readAllBytes());
+    InputStream responseBody = ApiClient.getResponseBody(response);
+    String body = null;
+    try {
+      body = responseBody == null ? null : new String(responseBody.readAllBytes());
+    } finally {
+      if (responseBody != null) {
+        responseBody.close();
+      }
+    }
     String message = formatExceptionMessage(operationId, response.statusCode(), body);
     return new ApiException(response.statusCode(), message, response.headers(), body);
   }
@@ -86,13 +116,75 @@ public class OperationsApi {
   }
 
   /**
+   * Download file from the given response.
+   *
+   * @param response Response
+   * @return File
+   * @throws ApiException If fail to read file content from response and write to disk
+   */
+  public File downloadFileFromResponse(HttpResponse<InputStream> response, InputStream responseBody) throws ApiException {
+    if (responseBody == null) {
+      throw new ApiException(new IOException("Response body is empty"));
+    }
+    try {
+      File file = prepareDownloadFile(response);
+      java.nio.file.Files.copy(responseBody, file.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+      return file;
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+  }
+
+  /**
+   * <p>Prepare the file for download from the response.</p>
+   *
+   * @param response a {@link java.net.http.HttpResponse} object.
+   * @return a {@link java.io.File} object.
+   * @throws java.io.IOException if any.
+   */
+  private File prepareDownloadFile(HttpResponse<InputStream> response) throws IOException {
+    String filename = null;
+    java.util.Optional<String> contentDisposition = response.headers().firstValue("Content-Disposition");
+    if (contentDisposition.isPresent() && !"".equals(contentDisposition.get())) {
+      // Get filename from the Content-Disposition header.
+      java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?");
+      java.util.regex.Matcher matcher = pattern.matcher(contentDisposition.get());
+      if (matcher.find())
+        filename = matcher.group(1);
+    }
+    File file = null;
+    if (filename != null) {
+      java.nio.file.Path tempDir = java.nio.file.Files.createTempDirectory("swagger-gen-native");
+      java.nio.file.Path filePath = java.nio.file.Files.createFile(tempDir.resolve(filename));
+      file = filePath.toFile();
+      tempDir.toFile().deleteOnExit();   // best effort cleanup
+      file.deleteOnExit(); // best effort cleanup
+    } else {
+      file = java.nio.file.Files.createTempFile("download-", "").toFile();
+      file.deleteOnExit(); // best effort cleanup
+    }
+    return file;
+  }
+
+  /**
    * 
    * Cancels the current operation of a plan. After cancelling an operation, the operation status for this plan can no longer be retrieved.
    * @param id ID of the plan which corresponding operation should be cancelled. (required)
    * @throws ApiException if fails to make API call
    */
-  public void cancelOperation(UUID id) throws ApiException {
-    cancelOperationWithHttpInfo(id);
+  public void cancelOperation(@javax.annotation.Nonnull UUID id) throws ApiException {
+    cancelOperation(id, null);
+  }
+
+  /**
+   * 
+   * Cancels the current operation of a plan. After cancelling an operation, the operation status for this plan can no longer be retrieved.
+   * @param id ID of the plan which corresponding operation should be cancelled. (required)
+   * @param headers Optional headers to include in the request
+   * @throws ApiException if fails to make API call
+   */
+  public void cancelOperation(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    cancelOperationWithHttpInfo(id, headers);
   }
 
   /**
@@ -102,8 +194,20 @@ public class OperationsApi {
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> cancelOperationWithHttpInfo(UUID id) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = cancelOperationRequestBuilder(id);
+  public ApiResponse<Void> cancelOperationWithHttpInfo(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return cancelOperationWithHttpInfo(id, null);
+  }
+
+  /**
+   * 
+   * Cancels the current operation of a plan. After cancelling an operation, the operation status for this plan can no longer be retrieved.
+   * @param id ID of the plan which corresponding operation should be cancelled. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> cancelOperationWithHttpInfo(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = cancelOperationRequestBuilder(id, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -111,21 +215,24 @@ public class OperationsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("cancelOperation", localVarResponse);
         }
-        return new ApiResponse<Void>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          null
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<>(
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            null
         );
       } finally {
-        // Drain the InputStream
-        while (localVarResponse.body().read() != -1) {
-            // Ignore
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
         }
-        localVarResponse.body().close();
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -136,7 +243,7 @@ public class OperationsApi {
     }
   }
 
-  private HttpRequest.Builder cancelOperationRequestBuilder(UUID id) throws ApiException {
+  private HttpRequest.Builder cancelOperationRequestBuilder(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling cancelOperation");
@@ -155,6 +262,8 @@ public class OperationsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -168,8 +277,20 @@ public class OperationsApi {
    * @return Operation
    * @throws ApiException if fails to make API call
    */
-  public Operation getOperationStatus(UUID id) throws ApiException {
-    ApiResponse<Operation> localVarResponse = getOperationStatusWithHttpInfo(id);
+  public Operation getOperationStatus(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return getOperationStatus(id, null);
+  }
+
+  /**
+   * 
+   * Retrieves the status of the current operation that is executed for the plan. If currently no operation is executed the status of the last executed operation is returned.
+   * @param id ID of the plan for which the corresponding operation status should be requested. (required)
+   * @param headers Optional headers to include in the request
+   * @return Operation
+   * @throws ApiException if fails to make API call
+   */
+  public Operation getOperationStatus(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    ApiResponse<Operation> localVarResponse = getOperationStatusWithHttpInfo(id, headers);
     return localVarResponse.getData();
   }
 
@@ -180,8 +301,20 @@ public class OperationsApi {
    * @return ApiResponse&lt;Operation&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Operation> getOperationStatusWithHttpInfo(UUID id) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getOperationStatusRequestBuilder(id);
+  public ApiResponse<Operation> getOperationStatusWithHttpInfo(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return getOperationStatusWithHttpInfo(id, null);
+  }
+
+  /**
+   * 
+   * Retrieves the status of the current operation that is executed for the plan. If currently no operation is executed the status of the last executed operation is returned.
+   * @param id ID of the plan for which the corresponding operation status should be requested. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Operation&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Operation> getOperationStatusWithHttpInfo(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getOperationStatusRequestBuilder(id, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -189,16 +322,35 @@ public class OperationsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("getOperationStatus", localVarResponse);
         }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<Operation>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        Operation responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Operation>() {});
+        
+
         return new ApiResponse<Operation>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<Operation>() {}) // closes the InputStream
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
         );
       } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -209,7 +361,7 @@ public class OperationsApi {
     }
   }
 
-  private HttpRequest.Builder getOperationStatusRequestBuilder(UUID id) throws ApiException {
+  private HttpRequest.Builder getOperationStatusRequestBuilder(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getOperationStatus");
@@ -228,6 +380,8 @@ public class OperationsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -240,8 +394,19 @@ public class OperationsApi {
    * @param id ID of the plan to be evaluated. (required)
    * @throws ApiException if fails to make API call
    */
-  public void startEvaluation(UUID id) throws ApiException {
-    startEvaluationWithHttpInfo(id);
+  public void startEvaluation(@javax.annotation.Nonnull UUID id) throws ApiException {
+    startEvaluation(id, null);
+  }
+
+  /**
+   * 
+   * Starts an asynchronous evaluation of the specified plan. Only one operation can be started for a plan at a time. Trying to start another operation before the current operation is finished results in an error. Whether an operation is finished or not can be checked with \&quot;getOperationStatus\&quot;. To get the result after the operation is finished \&quot;getPlan\&quot; can be used. Evaluation of a plan calculates driving times, service times, break and rest times and waiting times taking into account given time intervals. It may happen that not all restrictions can be fullfilled in which case one or more violations are reported. Evaluation does not change which transports are scheduled into which route nor their sequence, it does also not change the assignments of routes to vehicles.
+   * @param id ID of the plan to be evaluated. (required)
+   * @param headers Optional headers to include in the request
+   * @throws ApiException if fails to make API call
+   */
+  public void startEvaluation(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    startEvaluationWithHttpInfo(id, headers);
   }
 
   /**
@@ -251,8 +416,20 @@ public class OperationsApi {
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> startEvaluationWithHttpInfo(UUID id) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = startEvaluationRequestBuilder(id);
+  public ApiResponse<Void> startEvaluationWithHttpInfo(@javax.annotation.Nonnull UUID id) throws ApiException {
+    return startEvaluationWithHttpInfo(id, null);
+  }
+
+  /**
+   * 
+   * Starts an asynchronous evaluation of the specified plan. Only one operation can be started for a plan at a time. Trying to start another operation before the current operation is finished results in an error. Whether an operation is finished or not can be checked with \&quot;getOperationStatus\&quot;. To get the result after the operation is finished \&quot;getPlan\&quot; can be used. Evaluation of a plan calculates driving times, service times, break and rest times and waiting times taking into account given time intervals. It may happen that not all restrictions can be fullfilled in which case one or more violations are reported. Evaluation does not change which transports are scheduled into which route nor their sequence, it does also not change the assignments of routes to vehicles.
+   * @param id ID of the plan to be evaluated. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> startEvaluationWithHttpInfo(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = startEvaluationRequestBuilder(id, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -260,21 +437,24 @@ public class OperationsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("startEvaluation", localVarResponse);
         }
-        return new ApiResponse<Void>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          null
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<>(
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            null
         );
       } finally {
-        // Drain the InputStream
-        while (localVarResponse.body().read() != -1) {
-            // Ignore
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
         }
-        localVarResponse.body().close();
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -285,7 +465,7 @@ public class OperationsApi {
     }
   }
 
-  private HttpRequest.Builder startEvaluationRequestBuilder(UUID id) throws ApiException {
+  private HttpRequest.Builder startEvaluationRequestBuilder(@javax.annotation.Nonnull UUID id, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling startEvaluation");
@@ -304,6 +484,8 @@ public class OperationsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
@@ -320,8 +502,23 @@ public class OperationsApi {
    * @param optimizationPremium Set Optimization Premium to true to boost quality of results for all **quality** modes by taking advantage of additional computational resources.  Transactions&#39; packages for Optimization Premium are calculated differently.  See [here](./concepts/optimization-premium) for more information. (optional, default to false)
    * @throws ApiException if fails to make API call
    */
-  public void startOptimization(UUID id, OptimizationQuality quality, List<TweakToObjective> tweaksToObjective, Boolean considerTransportPriorities, Boolean optimizationPremium) throws ApiException {
-    startOptimizationWithHttpInfo(id, quality, tweaksToObjective, considerTransportPriorities, optimizationPremium);
+  public void startOptimization(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable OptimizationQuality quality, @javax.annotation.Nullable List<TweakToObjective> tweaksToObjective, @javax.annotation.Nullable Boolean considerTransportPriorities, @javax.annotation.Nullable Boolean optimizationPremium) throws ApiException {
+    startOptimization(id, quality, tweaksToObjective, considerTransportPriorities, optimizationPremium, null);
+  }
+
+  /**
+   * 
+   * Starts an asynchronous optimization of the specified plan. Only one operation can be started for a plan at a time. Trying to start another operation before the current operation is finished results in an error. Whether an operation is finished or not can be checked with \&quot;getOperationStatus\&quot;. To get the result after the operation is finished \&quot;getPlan\&quot; can be used. In the optimized plan, routes ideally include all transports that are specified in the request. Routes have additional information like arrival and departure times, driving times, service times and more.  If you call startOptimization multiple times consecutively for the same id, the optimization uses the result of the previous optimization as input, so previously planned transports remain planned in the output routes. If this is not what you intend to do, you can create a new plan before another startOptimization call.  When starting the optimization, the number of transports in the plan is used to calculate the number of transactions, see [here](../../help/faq-help) for more information.
+   * @param id ID of the plan to be optimized. (required)
+   * @param quality The optimization quality defines the tradeoff between calculation time and quality. A high solution quality and a low calculation time are conflicting. A larger solution search space may lead to a better solution but will take more calculation time.   * &#x60;STANDARD&#x60; - This quality level represents a good trade-off between solution quality and calculation time.   * &#x60;HIGH&#x60; - On this quality level, the search space is larger than on the standard level. This may lead to a better solution but will take more calculation time. (optional, default to STANDARD)
+   * @param tweaksToObjective A tweak to objective defines additional optimization criteria. Without any tweak, the standard optimization goal is to plan as many transports as possible with as few vehicles as possible.   * &#x60;AVOID_INTERSECTIONS&#x60; - The focus of this approach is to avoid intersections of edges, where an edge is a straight line drawn between two consecutive stops in a route. The number of routes may be higher compared to the standard optimization goal.   * &#x60;IGNORE_MINIMIZATION_OF_NUMBER_OF_ROUTES&#x60; - With this tweak, the number of vehicles used in a plan, and thus the number of routes, is not minimized. (optional)
+   * @param considerTransportPriorities Set transport priority consideration to true or false.  See [here](./concepts/transport-priorities) for more information. (optional, default to false)
+   * @param optimizationPremium Set Optimization Premium to true to boost quality of results for all **quality** modes by taking advantage of additional computational resources.  Transactions&#39; packages for Optimization Premium are calculated differently.  See [here](./concepts/optimization-premium) for more information. (optional, default to false)
+   * @param headers Optional headers to include in the request
+   * @throws ApiException if fails to make API call
+   */
+  public void startOptimization(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable OptimizationQuality quality, @javax.annotation.Nullable List<TweakToObjective> tweaksToObjective, @javax.annotation.Nullable Boolean considerTransportPriorities, @javax.annotation.Nullable Boolean optimizationPremium, Map<String, String> headers) throws ApiException {
+    startOptimizationWithHttpInfo(id, quality, tweaksToObjective, considerTransportPriorities, optimizationPremium, headers);
   }
 
   /**
@@ -335,8 +532,24 @@ public class OperationsApi {
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> startOptimizationWithHttpInfo(UUID id, OptimizationQuality quality, List<TweakToObjective> tweaksToObjective, Boolean considerTransportPriorities, Boolean optimizationPremium) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = startOptimizationRequestBuilder(id, quality, tweaksToObjective, considerTransportPriorities, optimizationPremium);
+  public ApiResponse<Void> startOptimizationWithHttpInfo(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable OptimizationQuality quality, @javax.annotation.Nullable List<TweakToObjective> tweaksToObjective, @javax.annotation.Nullable Boolean considerTransportPriorities, @javax.annotation.Nullable Boolean optimizationPremium) throws ApiException {
+    return startOptimizationWithHttpInfo(id, quality, tweaksToObjective, considerTransportPriorities, optimizationPremium, null);
+  }
+
+  /**
+   * 
+   * Starts an asynchronous optimization of the specified plan. Only one operation can be started for a plan at a time. Trying to start another operation before the current operation is finished results in an error. Whether an operation is finished or not can be checked with \&quot;getOperationStatus\&quot;. To get the result after the operation is finished \&quot;getPlan\&quot; can be used. In the optimized plan, routes ideally include all transports that are specified in the request. Routes have additional information like arrival and departure times, driving times, service times and more.  If you call startOptimization multiple times consecutively for the same id, the optimization uses the result of the previous optimization as input, so previously planned transports remain planned in the output routes. If this is not what you intend to do, you can create a new plan before another startOptimization call.  When starting the optimization, the number of transports in the plan is used to calculate the number of transactions, see [here](../../help/faq-help) for more information.
+   * @param id ID of the plan to be optimized. (required)
+   * @param quality The optimization quality defines the tradeoff between calculation time and quality. A high solution quality and a low calculation time are conflicting. A larger solution search space may lead to a better solution but will take more calculation time.   * &#x60;STANDARD&#x60; - This quality level represents a good trade-off between solution quality and calculation time.   * &#x60;HIGH&#x60; - On this quality level, the search space is larger than on the standard level. This may lead to a better solution but will take more calculation time. (optional, default to STANDARD)
+   * @param tweaksToObjective A tweak to objective defines additional optimization criteria. Without any tweak, the standard optimization goal is to plan as many transports as possible with as few vehicles as possible.   * &#x60;AVOID_INTERSECTIONS&#x60; - The focus of this approach is to avoid intersections of edges, where an edge is a straight line drawn between two consecutive stops in a route. The number of routes may be higher compared to the standard optimization goal.   * &#x60;IGNORE_MINIMIZATION_OF_NUMBER_OF_ROUTES&#x60; - With this tweak, the number of vehicles used in a plan, and thus the number of routes, is not minimized. (optional)
+   * @param considerTransportPriorities Set transport priority consideration to true or false.  See [here](./concepts/transport-priorities) for more information. (optional, default to false)
+   * @param optimizationPremium Set Optimization Premium to true to boost quality of results for all **quality** modes by taking advantage of additional computational resources.  Transactions&#39; packages for Optimization Premium are calculated differently.  See [here](./concepts/optimization-premium) for more information. (optional, default to false)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> startOptimizationWithHttpInfo(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable OptimizationQuality quality, @javax.annotation.Nullable List<TweakToObjective> tweaksToObjective, @javax.annotation.Nullable Boolean considerTransportPriorities, @javax.annotation.Nullable Boolean optimizationPremium, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = startOptimizationRequestBuilder(id, quality, tweaksToObjective, considerTransportPriorities, optimizationPremium, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -344,21 +557,24 @@ public class OperationsApi {
       if (memberVarResponseInterceptor != null) {
         memberVarResponseInterceptor.accept(localVarResponse);
       }
+      InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
           throw getApiException("startOptimization", localVarResponse);
         }
-        return new ApiResponse<Void>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          null
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<>(
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            null
         );
       } finally {
-        // Drain the InputStream
-        while (localVarResponse.body().read() != -1) {
-            // Ignore
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
         }
-        localVarResponse.body().close();
       }
     } catch (IOException e) {
       throw new ApiException(e);
@@ -369,7 +585,7 @@ public class OperationsApi {
     }
   }
 
-  private HttpRequest.Builder startOptimizationRequestBuilder(UUID id, OptimizationQuality quality, List<TweakToObjective> tweaksToObjective, Boolean considerTransportPriorities, Boolean optimizationPremium) throws ApiException {
+  private HttpRequest.Builder startOptimizationRequestBuilder(@javax.annotation.Nonnull UUID id, @javax.annotation.Nullable OptimizationQuality quality, @javax.annotation.Nullable List<TweakToObjective> tweaksToObjective, @javax.annotation.Nullable Boolean considerTransportPriorities, @javax.annotation.Nullable Boolean optimizationPremium, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling startOptimization");
@@ -409,6 +625,8 @@ public class OperationsApi {
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
     if (memberVarInterceptor != null) {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }

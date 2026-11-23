@@ -36,18 +36,20 @@ import com.ptvgroup.developer.client.routeoptimization.ApiClient;
   MixedLoadingProhibition.JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY1,
   MixedLoadingProhibition.JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY2
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-11T12:25:43.502978925Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-23T08:21:26.969512964Z[Etc/UTC]", comments = "Generator version: 7.22.0")
 public class MixedLoadingProhibition {
   public static final String JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY1 = "conflictingLoadCategory1";
+  @javax.annotation.Nonnull
   private String conflictingLoadCategory1;
 
   public static final String JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY2 = "conflictingLoadCategory2";
+  @javax.annotation.Nonnull
   private String conflictingLoadCategory2;
 
   public MixedLoadingProhibition() { 
   }
 
-  public MixedLoadingProhibition conflictingLoadCategory1(String conflictingLoadCategory1) {
+  public MixedLoadingProhibition conflictingLoadCategory1(@javax.annotation.Nonnull String conflictingLoadCategory1) {
     this.conflictingLoadCategory1 = conflictingLoadCategory1;
     return this;
   }
@@ -57,21 +59,21 @@ public class MixedLoadingProhibition {
    * @return conflictingLoadCategory1
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY1)
+  @JsonProperty(value = JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY1, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getConflictingLoadCategory1() {
     return conflictingLoadCategory1;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY1)
+  @JsonProperty(value = JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY1, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConflictingLoadCategory1(String conflictingLoadCategory1) {
+  public void setConflictingLoadCategory1(@javax.annotation.Nonnull String conflictingLoadCategory1) {
     this.conflictingLoadCategory1 = conflictingLoadCategory1;
   }
 
 
-  public MixedLoadingProhibition conflictingLoadCategory2(String conflictingLoadCategory2) {
+  public MixedLoadingProhibition conflictingLoadCategory2(@javax.annotation.Nonnull String conflictingLoadCategory2) {
     this.conflictingLoadCategory2 = conflictingLoadCategory2;
     return this;
   }
@@ -81,16 +83,16 @@ public class MixedLoadingProhibition {
    * @return conflictingLoadCategory2
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY2)
+  @JsonProperty(value = JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY2, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getConflictingLoadCategory2() {
     return conflictingLoadCategory2;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY2)
+  @JsonProperty(value = JSON_PROPERTY_CONFLICTING_LOAD_CATEGORY2, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConflictingLoadCategory2(String conflictingLoadCategory2) {
+  public void setConflictingLoadCategory2(@javax.annotation.Nonnull String conflictingLoadCategory2) {
     this.conflictingLoadCategory2 = conflictingLoadCategory2;
   }
 
@@ -131,10 +133,7 @@ public class MixedLoadingProhibition {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -171,12 +170,12 @@ public class MixedLoadingProhibition {
 
     // add `conflictingLoadCategory1` to the URL query string
     if (getConflictingLoadCategory1() != null) {
-      joiner.add(String.format("%sconflictingLoadCategory1%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getConflictingLoadCategory1()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sconflictingLoadCategory1%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConflictingLoadCategory1()))));
     }
 
     // add `conflictingLoadCategory2` to the URL query string
     if (getConflictingLoadCategory2() != null) {
-      joiner.add(String.format("%sconflictingLoadCategory2%s=%s", prefix, suffix, URLEncoder.encode(ApiClient.valueToString(getConflictingLoadCategory2()), StandardCharsets.UTF_8).replaceAll("\\+", "%20")));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sconflictingLoadCategory2%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConflictingLoadCategory2()))));
     }
 
     return joiner.toString();
