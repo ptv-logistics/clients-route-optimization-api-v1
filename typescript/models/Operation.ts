@@ -97,11 +97,11 @@ export function OperationFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-  export function OperationToJSON(json: any): Operation {
-      return OperationToJSONTyped(json, false);
-  }
+export function OperationToJSON(json: any): Operation {
+    return OperationToJSONTyped(json, false);
+}
 
-  export function OperationToJSONTyped(value?: Operation | null, ignoreDiscriminator: boolean = false): any {
+export function OperationToJSONTyped(value?: Operation | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -110,7 +110,7 @@ export function OperationFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         
         'name': value['name'],
         'status': OperationStatusToJSON(value['status']),
-        'startTime': ((value['startTime']).toISOString()),
+        'startTime': value['startTime'].toISOString(),
         'elapsedTime': value['elapsedTime'],
         'error': ErrorResponseToJSON(value['error']),
     };

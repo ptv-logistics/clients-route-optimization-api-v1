@@ -82,11 +82,11 @@ export function DailyRestRuleFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function DailyRestRuleToJSON(json: any): DailyRestRule {
-      return DailyRestRuleToJSONTyped(json, false);
-  }
+export function DailyRestRuleToJSON(json: any): DailyRestRule {
+    return DailyRestRuleToJSONTyped(json, false);
+}
 
-  export function DailyRestRuleToJSONTyped(value?: DailyRestRule | null, ignoreDiscriminator: boolean = false): any {
+export function DailyRestRuleToJSONTyped(value?: DailyRestRule | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

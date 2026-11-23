@@ -84,11 +84,11 @@ export function RouteFromJSONTyped(json: any, ignoreDiscriminator: boolean): Rou
     };
 }
 
-  export function RouteToJSON(json: any): Route {
-      return RouteToJSONTyped(json, false);
-  }
+export function RouteToJSON(json: any): Route {
+    return RouteToJSONTyped(json, false);
+}
 
-  export function RouteToJSONTyped(value?: Omit<Route, 'report'> | null, ignoreDiscriminator: boolean = false): any {
+export function RouteToJSONTyped(value?: Omit<Route, 'report'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

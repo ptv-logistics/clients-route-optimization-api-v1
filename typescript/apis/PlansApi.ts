@@ -12,21 +12,22 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  ErrorResponse,
-  Plan,
-  PlanSummaries,
-} from '../models/index';
 import {
+    type ErrorResponse,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+} from '../models/ErrorResponse';
+import {
+    type Plan,
     PlanFromJSON,
     PlanToJSON,
+} from '../models/Plan';
+import {
+    type PlanSummaries,
     PlanSummariesFromJSON,
     PlanSummariesToJSON,
-} from '../models/index';
+} from '../models/PlanSummaries';
 
 export interface CreatePlanRequest {
     plan: Omit<Plan, 'id'|'unplannedVehicleIds'|'unplannedTransportIds'|'warnings'>;
@@ -46,9 +47,9 @@ export interface GetPlanRequest {
 export class PlansApi extends runtime.BaseAPI {
 
     /**
-     * Creates a new plan containing parts like vehicles and transports which should be used for a subsequent optimization. It persists and returns a slightly modified plan including a server generated ID that can be used for later retrieval. This returned plan can be used for automated route optimization via Operations API.
+     * Creates request options for createPlan without sending the request
      */
-    async createPlanRaw(requestParameters: CreatePlanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Plan>> {
+    async createPlanRequestOpts(requestParameters: CreatePlanRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['plan'] == null) {
             throw new runtime.RequiredError(
                 'plan',
@@ -66,13 +67,24 @@ export class PlansApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/plans`,
+
+        let urlPath = `/plans`;
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PlanToJSON(requestParameters['plan']),
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Creates a new plan containing parts like vehicles and transports which should be used for a subsequent optimization. It persists and returns a slightly modified plan including a server generated ID that can be used for later retrieval. This returned plan can be used for automated route optimization via Operations API.
+     */
+    async createPlanRaw(requestParameters: CreatePlanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Plan>> {
+        const requestOptions = await this.createPlanRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PlanFromJSON(jsonValue));
     }
@@ -86,9 +98,9 @@ export class PlansApi extends runtime.BaseAPI {
     }
 
     /**
-     * Deletes a plan identified by the ID. Also cancels a currently running optimization of the plan.
+     * Creates request options for deletePlan without sending the request
      */
-    async deletePlanRaw(requestParameters: DeletePlanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async deletePlanRequestOpts(requestParameters: DeletePlanRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -104,12 +116,24 @@ export class PlansApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/plans/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/plans/{id}`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Deletes a plan identified by the ID. Also cancels a currently running optimization of the plan.
+     */
+    async deletePlanRaw(requestParameters: DeletePlanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.deletePlanRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
@@ -122,9 +146,9 @@ export class PlansApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves a plan identified by the ID.
+     * Creates request options for getPlan without sending the request
      */
-    async getPlanRaw(requestParameters: GetPlanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Plan>> {
+    async getPlanRequestOpts(requestParameters: GetPlanRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -140,12 +164,24 @@ export class PlansApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/plans/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/plans/{id}`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Retrieves a plan identified by the ID.
+     */
+    async getPlanRaw(requestParameters: GetPlanRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Plan>> {
+        const requestOptions = await this.getPlanRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PlanFromJSON(jsonValue));
     }
@@ -159,9 +195,9 @@ export class PlansApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves a list of summaries for at most 1000 least recently updated available plans.
+     * Creates request options for getPlanSummaries without sending the request
      */
-    async getPlanSummariesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlanSummaries>> {
+    async getPlanSummariesRequestOpts(): Promise<runtime.RequestOpts> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -170,12 +206,23 @@ export class PlansApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/plans/summaries`,
+
+        let urlPath = `/plans/summaries`;
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Retrieves a list of summaries for at most 1000 least recently updated available plans.
+     */
+    async getPlanSummariesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlanSummaries>> {
+        const requestOptions = await this.getPlanSummariesRequestOpts();
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PlanSummariesFromJSON(jsonValue));
     }

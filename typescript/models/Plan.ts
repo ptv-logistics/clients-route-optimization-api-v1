@@ -188,11 +188,11 @@ export function PlanFromJSONTyped(json: any, ignoreDiscriminator: boolean): Plan
     };
 }
 
-  export function PlanToJSON(json: any): Plan {
-      return PlanToJSONTyped(json, false);
-  }
+export function PlanToJSON(json: any): Plan {
+    return PlanToJSONTyped(json, false);
+}
 
-  export function PlanToJSONTyped(value?: Omit<Plan, 'id'|'unplannedVehicleIds'|'unplannedTransportIds'|'warnings'> | null, ignoreDiscriminator: boolean = false): any {
+export function PlanToJSONTyped(value?: Omit<Plan, 'id'|'unplannedVehicleIds'|'unplannedTransportIds'|'warnings'> | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

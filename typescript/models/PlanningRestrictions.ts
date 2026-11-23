@@ -74,11 +74,11 @@ export function PlanningRestrictionsFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-  export function PlanningRestrictionsToJSON(json: any): PlanningRestrictions {
-      return PlanningRestrictionsToJSONTyped(json, false);
-  }
+export function PlanningRestrictionsToJSON(json: any): PlanningRestrictions {
+    return PlanningRestrictionsToJSONTyped(json, false);
+}
 
-  export function PlanningRestrictionsToJSONTyped(value?: PlanningRestrictions | null, ignoreDiscriminator: boolean = false): any {
+export function PlanningRestrictionsToJSONTyped(value?: PlanningRestrictions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

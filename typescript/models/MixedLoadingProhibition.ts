@@ -59,11 +59,11 @@ export function MixedLoadingProhibitionFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-  export function MixedLoadingProhibitionToJSON(json: any): MixedLoadingProhibition {
-      return MixedLoadingProhibitionToJSONTyped(json, false);
-  }
+export function MixedLoadingProhibitionToJSON(json: any): MixedLoadingProhibition {
+    return MixedLoadingProhibitionToJSONTyped(json, false);
+}
 
-  export function MixedLoadingProhibitionToJSONTyped(value?: MixedLoadingProhibition | null, ignoreDiscriminator: boolean = false): any {
+export function MixedLoadingProhibitionToJSONTyped(value?: MixedLoadingProhibition | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

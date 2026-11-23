@@ -12,24 +12,27 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  ErrorResponse,
-  Operation,
-  OptimizationQuality,
-  TweakToObjective,
-} from '../models/index';
 import {
+    type ErrorResponse,
     ErrorResponseFromJSON,
     ErrorResponseToJSON,
+} from '../models/ErrorResponse';
+import {
+    type Operation,
     OperationFromJSON,
     OperationToJSON,
+} from '../models/Operation';
+import {
+    type OptimizationQuality,
     OptimizationQualityFromJSON,
     OptimizationQualityToJSON,
+} from '../models/OptimizationQuality';
+import {
+    type TweakToObjective,
     TweakToObjectiveFromJSON,
     TweakToObjectiveToJSON,
-} from '../models/index';
+} from '../models/TweakToObjective';
 
 export interface CancelOperationRequest {
     id: string;
@@ -57,9 +60,9 @@ export interface StartOptimizationRequest {
 export class OperationsApi extends runtime.BaseAPI {
 
     /**
-     * Cancels the current operation of a plan. After cancelling an operation, the operation status for this plan can no longer be retrieved.
+     * Creates request options for cancelOperation without sending the request
      */
-    async cancelOperationRaw(requestParameters: CancelOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async cancelOperationRequestOpts(requestParameters: CancelOperationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -75,12 +78,24 @@ export class OperationsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/plans/{id}/operation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/plans/{id}/operation`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Cancels the current operation of a plan. After cancelling an operation, the operation status for this plan can no longer be retrieved.
+     */
+    async cancelOperationRaw(requestParameters: CancelOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.cancelOperationRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
@@ -93,9 +108,9 @@ export class OperationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves the status of the current operation that is executed for the plan. If currently no operation is executed the status of the last executed operation is returned.
+     * Creates request options for getOperationStatus without sending the request
      */
-    async getOperationStatusRaw(requestParameters: GetOperationStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Operation>> {
+    async getOperationStatusRequestOpts(requestParameters: GetOperationStatusRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -111,12 +126,24 @@ export class OperationsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/plans/{id}/operation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/plans/{id}/operation`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Retrieves the status of the current operation that is executed for the plan. If currently no operation is executed the status of the last executed operation is returned.
+     */
+    async getOperationStatusRaw(requestParameters: GetOperationStatusRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Operation>> {
+        const requestOptions = await this.getOperationStatusRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OperationFromJSON(jsonValue));
     }
@@ -130,9 +157,9 @@ export class OperationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Starts an asynchronous evaluation of the specified plan. Only one operation can be started for a plan at a time. Trying to start another operation before the current operation is finished results in an error. Whether an operation is finished or not can be checked with \"getOperationStatus\". To get the result after the operation is finished \"getPlan\" can be used. Evaluation of a plan calculates driving times, service times, break and rest times and waiting times taking into account given time intervals. It may happen that not all restrictions can be fullfilled in which case one or more violations are reported. Evaluation does not change which transports are scheduled into which route nor their sequence, it does also not change the assignments of routes to vehicles.
+     * Creates request options for startEvaluation without sending the request
      */
-    async startEvaluationRaw(requestParameters: StartEvaluationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async startEvaluationRequestOpts(requestParameters: StartEvaluationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -148,12 +175,24 @@ export class OperationsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/plans/{id}/operation/evaluation`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/plans/{id}/operation/evaluation`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Starts an asynchronous evaluation of the specified plan. Only one operation can be started for a plan at a time. Trying to start another operation before the current operation is finished results in an error. Whether an operation is finished or not can be checked with \"getOperationStatus\". To get the result after the operation is finished \"getPlan\" can be used. Evaluation of a plan calculates driving times, service times, break and rest times and waiting times taking into account given time intervals. It may happen that not all restrictions can be fullfilled in which case one or more violations are reported. Evaluation does not change which transports are scheduled into which route nor their sequence, it does also not change the assignments of routes to vehicles.
+     */
+    async startEvaluationRaw(requestParameters: StartEvaluationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.startEvaluationRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
@@ -166,9 +205,9 @@ export class OperationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Starts an asynchronous optimization of the specified plan. Only one operation can be started for a plan at a time. Trying to start another operation before the current operation is finished results in an error. Whether an operation is finished or not can be checked with \"getOperationStatus\". To get the result after the operation is finished \"getPlan\" can be used. In the optimized plan, routes ideally include all transports that are specified in the request. Routes have additional information like arrival and departure times, driving times, service times and more.  If you call startOptimization multiple times consecutively for the same id, the optimization uses the result of the previous optimization as input, so previously planned transports remain planned in the output routes. If this is not what you intend to do, you can create a new plan before another startOptimization call.  When starting the optimization, the number of transports in the plan is used to calculate the number of transactions, see [here](../../help/faq-help) for more information.
+     * Creates request options for startOptimization without sending the request
      */
-    async startOptimizationRaw(requestParameters: StartOptimizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async startOptimizationRequestOpts(requestParameters: StartOptimizationRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['id'] == null) {
             throw new runtime.RequiredError(
                 'id',
@@ -200,12 +239,24 @@ export class OperationsApi extends runtime.BaseAPI {
             headerParameters["apiKey"] = await this.configuration.apiKey("apiKey"); // apiKeyAuth authentication
         }
 
-        const response = await this.request({
-            path: `/plans/{id}/operation/optimization`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+
+        let urlPath = `/plans/{id}/operation/optimization`;
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
+
+        return {
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-        }, initOverrides);
+        };
+    }
+
+    /**
+     * Starts an asynchronous optimization of the specified plan. Only one operation can be started for a plan at a time. Trying to start another operation before the current operation is finished results in an error. Whether an operation is finished or not can be checked with \"getOperationStatus\". To get the result after the operation is finished \"getPlan\" can be used. In the optimized plan, routes ideally include all transports that are specified in the request. Routes have additional information like arrival and departure times, driving times, service times and more.  If you call startOptimization multiple times consecutively for the same id, the optimization uses the result of the previous optimization as input, so previously planned transports remain planned in the output routes. If this is not what you intend to do, you can create a new plan before another startOptimization call.  When starting the optimization, the number of transports in the plan is used to calculate the number of transactions, see [here](../../help/faq-help) for more information.
+     */
+    async startOptimizationRaw(requestParameters: StartOptimizationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.startOptimizationRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }

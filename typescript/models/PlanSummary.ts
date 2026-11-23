@@ -104,11 +104,11 @@ export function PlanSummaryFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function PlanSummaryToJSON(json: any): PlanSummary {
-      return PlanSummaryToJSONTyped(json, false);
-  }
+export function PlanSummaryToJSON(json: any): PlanSummary {
+    return PlanSummaryToJSONTyped(json, false);
+}
 
-  export function PlanSummaryToJSONTyped(value?: PlanSummary | null, ignoreDiscriminator: boolean = false): any {
+export function PlanSummaryToJSONTyped(value?: PlanSummary | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -121,8 +121,8 @@ export function PlanSummaryFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'numberOfTransports': value['numberOfTransports'],
         'numberOfRoutes': value['numberOfRoutes'],
         'description': value['description'],
-        'updateTime': ((value['updateTime']).toISOString()),
-        'creationTime': ((value['creationTime']).toISOString()),
+        'updateTime': value['updateTime'].toISOString(),
+        'creationTime': value['creationTime'].toISOString(),
     };
 }
 

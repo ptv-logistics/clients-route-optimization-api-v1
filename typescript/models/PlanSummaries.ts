@@ -57,11 +57,11 @@ export function PlanSummariesFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-  export function PlanSummariesToJSON(json: any): PlanSummaries {
-      return PlanSummariesToJSONTyped(json, false);
-  }
+export function PlanSummariesToJSON(json: any): PlanSummaries {
+    return PlanSummariesToJSONTyped(json, false);
+}
 
-  export function PlanSummariesToJSONTyped(value?: PlanSummaries | null, ignoreDiscriminator: boolean = false): any {
+export function PlanSummariesToJSONTyped(value?: PlanSummaries | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

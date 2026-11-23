@@ -113,19 +113,19 @@ export function RouteReportFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-  export function RouteReportToJSON(json: any): RouteReport {
-      return RouteReportToJSONTyped(json, false);
-  }
+export function RouteReportToJSON(json: any): RouteReport {
+    return RouteReportToJSONTyped(json, false);
+}
 
-  export function RouteReportToJSONTyped(value?: RouteReport | null, ignoreDiscriminator: boolean = false): any {
+export function RouteReportToJSONTyped(value?: RouteReport | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
 
     return {
         
-        'startTime': ((value['startTime']).toISOString()),
-        'endTime': ((value['endTime']).toISOString()),
+        'startTime': value['startTime'].toISOString(),
+        'endTime': value['endTime'].toISOString(),
         'travelTime': value['travelTime'],
         'distance': value['distance'],
         'drivingTime': value['drivingTime'],
