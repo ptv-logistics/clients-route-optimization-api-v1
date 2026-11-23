@@ -41,7 +41,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// </summary>
         /// <param name="conflictingLoadCategory1">A transport with this load category is not allowed to be on the same trip as a transport with load category conflictingLoadCategory2. The load category can be any string but it must not be empty and not the same as conflictingLoadCategory2. (required).</param>
         /// <param name="conflictingLoadCategory2">A transport with this load category is not allowed to be on the same trip as a transport with load category conflictingLoadCategory1. The load category can be any string but it must not be empty and not the same as conflictingLoadCategory1. (required).</param>
-        public MixedLoadingProhibition(string conflictingLoadCategory1 = default(string), string conflictingLoadCategory2 = default(string))
+        public MixedLoadingProhibition(string conflictingLoadCategory1 = default, string conflictingLoadCategory2 = default)
         {
             // to ensure "conflictingLoadCategory1" is required (not null)
             if (conflictingLoadCategory1 == null)

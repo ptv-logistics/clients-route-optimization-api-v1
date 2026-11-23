@@ -47,7 +47,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="description">The description of the plan..</param>
         /// <param name="updateTime">Time of the latest update of the plan formatted according to [RFC 3339](https://tools.ietf.org/html/rfc3339). (required).</param>
         /// <param name="creationTime">Time of the creation of the plan formatted according to [RFC 3339](https://tools.ietf.org/html/rfc3339). (required).</param>
-        public PlanSummary(Guid id = default(Guid), int? numberOfLocations = default(int?), int? numberOfVehicles = default(int?), int? numberOfTransports = default(int?), int? numberOfRoutes = default(int?), string description = default(string), DateTimeOffset updateTime = default(DateTimeOffset), DateTimeOffset creationTime = default(DateTimeOffset))
+        public PlanSummary(Guid id = default, int? numberOfLocations = default, int? numberOfVehicles = default, int? numberOfTransports = default, int? numberOfRoutes = default, string description = default, DateTimeOffset updateTime = default, DateTimeOffset creationTime = default)
         {
             this.Id = id;
             // to ensure "numberOfLocations" is required (not null)

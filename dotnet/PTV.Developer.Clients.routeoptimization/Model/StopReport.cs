@@ -47,7 +47,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="restTime">The rest time at the stop [s]. (required).</param>
         /// <param name="quantities">The quantities loaded on the vehicle when leaving the stop..</param>
         /// <param name="alternativeCapacitiesIndex">This field is only returned if the vehicle can transport the **quantities** loaded on the vehicle when leaving the stop with the given **capacities**. In this case this field contains the index of the chosen **alternativeCapacities**. If the route has at least one &#x60;VEHICLE_CAPACITY&#x60; violation this field will not be set.  See [here](./concepts/capacities-and-alternative-capacities) for more information..</param>
-        public StopReport(DateTimeOffset arrivalTime = default(DateTimeOffset), DateTimeOffset departureTime = default(DateTimeOffset), int? serviceTime = default(int?), int? waitingTime = default(int?), int? breakTime = default(int?), int? restTime = default(int?), List<int?> quantities = default(List<int?>), int? alternativeCapacitiesIndex = default(int?))
+        public StopReport(DateTimeOffset arrivalTime = default, DateTimeOffset departureTime = default, int? serviceTime = default, int? waitingTime = default, int? breakTime = default, int? restTime = default, List<int?> quantities = default, int? alternativeCapacitiesIndex = default)
         {
             this.ArrivalTime = arrivalTime;
             this.DepartureTime = departureTime;

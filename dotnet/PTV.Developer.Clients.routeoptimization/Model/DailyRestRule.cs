@@ -49,7 +49,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="maximumDrivingTimeBetweenDailyRests">Maximum duration that the driver is allowed to drive [s] before taking a daily rest. The maximum driving time is considered as infinite if it is not set..</param>
         /// <param name="maximumTravelTimeBetweenDailyRests">Maximum duration that the driver is allowed to travel [s] before taking a daily. The maximum travel time is considered as infinite if it is not set..</param>
         /// <param name="dailyRestPosition">dailyRestPosition.</param>
-        public DailyRestRule(int? dailyRestTime = default(int?), int? maximumDrivingTimeBetweenDailyRests = default(int?), int? maximumTravelTimeBetweenDailyRests = default(int?), DailyRestPosition? dailyRestPosition = default(DailyRestPosition?))
+        public DailyRestRule(int? dailyRestTime = default, int? maximumDrivingTimeBetweenDailyRests = default, int? maximumTravelTimeBetweenDailyRests = default, DailyRestPosition? dailyRestPosition = default)
         {
             // to ensure "dailyRestTime" is required (not null)
             if (dailyRestTime == null)

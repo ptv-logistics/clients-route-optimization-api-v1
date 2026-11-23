@@ -52,7 +52,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="capacityExceedance">Specifies a violation of the capacities of the used vehicle: Exceedance of the capacity in each quantity dimension of goods. Is only filled for the following violation type: _VEHICLE_CAPACITY_..</param>
         /// <param name="missingEquipment">Specifies a violation for missing equipment (e.g. missing equipment of the used vehicle) that is required by the transports of the route. Is only filled for the following violation type: _VEHICLE_EQUIPMENT_..</param>
         /// <param name="mixedLoadingProhibitions">Is only filled for the following violation type: _MIXED_LOADING_PROHIBITION_..</param>
-        public Violation(ViolationType type = default(ViolationType), int? timeExceedance = default(int?), int? distanceExceedance = default(int?), int? numberOfStopsExceedance = default(int?), List<int?> capacityExceedance = default(List<int?>), List<string> missingEquipment = default(List<string>), List<MixedLoadingProhibition> mixedLoadingProhibitions = default(List<MixedLoadingProhibition>))
+        public Violation(ViolationType type = default, int? timeExceedance = default, int? distanceExceedance = default, int? numberOfStopsExceedance = default, List<int?> capacityExceedance = default, List<string> missingEquipment = default, List<MixedLoadingProhibition> mixedLoadingProhibitions = default)
         {
             this.Type = type;
             this.TimeExceedance = timeExceedance;

@@ -136,7 +136,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Plan</returns>
-        System.Threading.Tasks.Task<Plan> CreatePlanAsync(Plan plan, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Plan> CreatePlanAsync(Plan plan, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -149,7 +149,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Plan)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Plan>> CreatePlanWithHttpInfoAsync(Plan plan, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Plan>> CreatePlanWithHttpInfoAsync(Plan plan, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -161,7 +161,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeletePlanAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task DeletePlanAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -174,7 +174,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeletePlanWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeletePlanWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -186,7 +186,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Plan</returns>
-        System.Threading.Tasks.Task<Plan> GetPlanAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Plan> GetPlanAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -199,7 +199,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Plan)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Plan>> GetPlanWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Plan>> GetPlanWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -210,7 +210,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PlanSummaries</returns>
-        System.Threading.Tasks.Task<PlanSummaries> GetPlanSummariesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PlanSummaries> GetPlanSummariesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -222,7 +222,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PlanSummaries)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PlanSummaries>> GetPlanSummariesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PlanSummaries>> GetPlanSummariesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -383,6 +383,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.routeoptimization.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -427,7 +428,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Plan</returns>
-        public async System.Threading.Tasks.Task<Plan> CreatePlanAsync(Plan plan, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Plan> CreatePlanAsync(Plan plan, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Plan> localVarResponse = await CreatePlanWithHttpInfoAsync(plan, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -441,7 +442,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Plan)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Plan>> CreatePlanWithHttpInfoAsync(Plan plan, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Plan>> CreatePlanWithHttpInfoAsync(Plan plan, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'plan' is set
             if (plan == null)
@@ -531,6 +532,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.routeoptimization.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -575,7 +577,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeletePlanAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task DeletePlanAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             await DeletePlanWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
         }
@@ -588,7 +590,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object>> DeletePlanWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object>> DeletePlanWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             PTV.Developer.Clients.routeoptimization.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.routeoptimization.Client.RequestOptions();
@@ -672,6 +674,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.routeoptimization.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -716,7 +719,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Plan</returns>
-        public async System.Threading.Tasks.Task<Plan> GetPlanAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Plan> GetPlanAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Plan> localVarResponse = await GetPlanWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -730,7 +733,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Plan)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Plan>> GetPlanWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Plan>> GetPlanWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             PTV.Developer.Clients.routeoptimization.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.routeoptimization.Client.RequestOptions();
@@ -812,6 +815,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.routeoptimization.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -854,7 +858,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PlanSummaries</returns>
-        public async System.Threading.Tasks.Task<PlanSummaries> GetPlanSummariesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PlanSummaries> GetPlanSummariesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             PTV.Developer.Clients.routeoptimization.Client.ApiResponse<PlanSummaries> localVarResponse = await GetPlanSummariesWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -867,7 +871,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PlanSummaries)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<PlanSummaries>> GetPlanSummariesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<PlanSummaries>> GetPlanSummariesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             PTV.Developer.Clients.routeoptimization.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.routeoptimization.Client.RequestOptions();

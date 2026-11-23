@@ -48,7 +48,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="waitingTime">The total waiting time of the route [s]. (required).</param>
         /// <param name="breakTime">The total break time of the route [s]. (required).</param>
         /// <param name="restTime">The total rest time of the route [s]. (required).</param>
-        public RouteReport(DateTimeOffset startTime = default(DateTimeOffset), DateTimeOffset endTime = default(DateTimeOffset), int? travelTime = default(int?), int? distance = default(int?), int? drivingTime = default(int?), int? serviceTime = default(int?), int? waitingTime = default(int?), int? breakTime = default(int?), int? restTime = default(int?))
+        public RouteReport(DateTimeOffset startTime = default, DateTimeOffset endTime = default, int? travelTime = default, int? distance = default, int? drivingTime = default, int? serviceTime = default, int? waitingTime = default, int? breakTime = default, int? restTime = default)
         {
             this.StartTime = startTime;
             this.EndTime = endTime;

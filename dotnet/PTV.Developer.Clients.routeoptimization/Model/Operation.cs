@@ -50,7 +50,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="startTime">The start time of the operation formatted according to [RFC 3339](https://tools.ietf.org/html/rfc3339), by means the client can decide to delete the operation. The value is always returned in UTC time. (required).</param>
         /// <param name="elapsedTime">The elapsed time of the operation [s], by means the client can decide to delete the operation. It represents the duration from the start time until now when the operation is still active or from the start time until the end of operation when this operation is already completed. (required).</param>
         /// <param name="error">error.</param>
-        public Operation(string name = default(string), OperationStatus status = default(OperationStatus), DateTimeOffset startTime = default(DateTimeOffset), int? elapsedTime = default(int?), ErrorResponse error = default(ErrorResponse))
+        public Operation(string name = default, OperationStatus status = default, DateTimeOffset startTime = default, int? elapsedTime = default, ErrorResponse error = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)

@@ -44,7 +44,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="waitingTime">The sum of waiting times between the departure from the previous stop and the arrival at this stop [s]. (required).</param>
         /// <param name="breakTime">The sum of break times between the departure from the previous stop and the arrival at this stop [s]. (required).</param>
         /// <param name="restTime">The sum of rest times between the departure from the previous stop and the arrival at this stop [s]. (required).</param>
-        public WayReport(int? distance = default(int?), int? drivingTime = default(int?), int? waitingTime = default(int?), int? breakTime = default(int?), int? restTime = default(int?))
+        public WayReport(int? distance = default, int? drivingTime = default, int? waitingTime = default, int? breakTime = default, int? restTime = default)
         {
             // to ensure "distance" is required (not null)
             if (distance == null)

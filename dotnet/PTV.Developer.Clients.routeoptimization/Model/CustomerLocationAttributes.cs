@@ -44,7 +44,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="customerId">ID of the customer that can be set to link several customer locations with different opening intervals. Customer locations with the same customer ID may only differ in the location ID and in the opening intervals. If successive stops at customer locations share the same customer ID, the service time per transport stop of the location and of the vehicle are only considered at the first stop of the sequence..</param>
         /// <param name="positionInTrip">positionInTrip.</param>
         /// <param name="tripSectionNumber">If tripSectionNumber is specified, a stop at this customer location will be visited after stops (within the same trip) at customer locations with specified lower tripSectionNumber and before stops (within the same trip) at customer locations with specified higher tripSectionNumber. Consequently, the trip section numbers of stops at customer locations must be non-decreasing within each trip.   If specified, positionInTrip must not be set for the same location.  See [here](./concepts/trip-sections-and-position-trips) for more information..</param>
-        public CustomerLocationAttributes(int? serviceTimePerTransportStop = 0, string customerId = default(string), PositionInTrip? positionInTrip = default(PositionInTrip?), int? tripSectionNumber = default(int?))
+        public CustomerLocationAttributes(int? serviceTimePerTransportStop = 0, string customerId = default, PositionInTrip? positionInTrip = default, int? tripSectionNumber = default)
         {
             // use default value if no "serviceTimePerTransportStop" provided
             this.ServiceTimePerTransportStop = serviceTimePerTransportStop ?? 0;

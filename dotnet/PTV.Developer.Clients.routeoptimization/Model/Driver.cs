@@ -54,7 +54,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="workLogbook">workLogbook.</param>
         /// <param name="maximumDrivingTime">The maximum driving time of the driver [s].   This includes the driving time before the start of the route (see **accumulatedDrivingTimeSinceLastDailyRest** in **workLogbook**). The maximum driving time is considered as infinite if it is not set. Currently, each driver must have the same value specified..</param>
         /// <param name="maximumTravelTime">The maximum travel time of the driver [s]. The travel time contains all waiting, service and driving times.  This includes the travel time before the start of the route (see **accumulatedTravelTimeSinceLastDailyRest** in **workLogbook**). The maximum travel time is considered as infinite if it is not set. Currently, each driver must have the same value specified..</param>
-        public Driver(string id = default(string), string vehicleId = default(string), List<TimeInterval> availabilities = default(List<TimeInterval>), WorkingHoursPreset? workingHoursPreset = default(WorkingHoursPreset?), BreakRule breakRule = default(BreakRule), DailyRestRule dailyRestRule = default(DailyRestRule), WorkLogbook workLogbook = default(WorkLogbook), int? maximumDrivingTime = default(int?), int? maximumTravelTime = default(int?))
+        public Driver(string id = default, string vehicleId = default, List<TimeInterval> availabilities = default, WorkingHoursPreset? workingHoursPreset = default, BreakRule breakRule = default, DailyRestRule dailyRestRule = default, WorkLogbook workLogbook = default, int? maximumDrivingTime = default, int? maximumTravelTime = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)

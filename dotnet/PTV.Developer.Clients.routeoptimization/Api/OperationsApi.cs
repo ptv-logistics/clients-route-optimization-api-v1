@@ -109,7 +109,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="optimizationPremium">Set Optimization Premium to true to boost quality of results for all **quality** modes by taking advantage of additional computational resources.  Transactions&#39; packages for Optimization Premium are calculated differently.  See [here](./concepts/optimization-premium) for more information. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void StartOptimization(Guid id, OptimizationQuality? quality = default(OptimizationQuality?), List<TweakToObjective>? tweaksToObjective = default(List<TweakToObjective>?), bool? considerTransportPriorities = default(bool?), bool? optimizationPremium = default(bool?), int operationIndex = 0);
+        void StartOptimization(Guid id, OptimizationQuality? quality = default, List<TweakToObjective>? tweaksToObjective = default, bool? considerTransportPriorities = default, bool? optimizationPremium = default, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -125,7 +125,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="optimizationPremium">Set Optimization Premium to true to boost quality of results for all **quality** modes by taking advantage of additional computational resources.  Transactions&#39; packages for Optimization Premium are calculated differently.  See [here](./concepts/optimization-premium) for more information. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> StartOptimizationWithHttpInfo(Guid id, OptimizationQuality? quality = default(OptimizationQuality?), List<TweakToObjective>? tweaksToObjective = default(List<TweakToObjective>?), bool? considerTransportPriorities = default(bool?), bool? optimizationPremium = default(bool?), int operationIndex = 0);
+        ApiResponse<Object> StartOptimizationWithHttpInfo(Guid id, OptimizationQuality? quality = default, List<TweakToObjective>? tweaksToObjective = default, bool? considerTransportPriorities = default, bool? optimizationPremium = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -146,7 +146,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CancelOperationAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task CancelOperationAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -159,7 +159,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CancelOperationWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> CancelOperationWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -171,7 +171,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Operation</returns>
-        System.Threading.Tasks.Task<Operation> GetOperationStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Operation> GetOperationStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -184,7 +184,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Operation)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Operation>> GetOperationStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Operation>> GetOperationStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -196,7 +196,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task StartEvaluationAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task StartEvaluationAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -209,7 +209,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> StartEvaluationWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> StartEvaluationWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -225,7 +225,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task StartOptimizationAsync(Guid id, OptimizationQuality? quality = default(OptimizationQuality?), List<TweakToObjective>? tweaksToObjective = default(List<TweakToObjective>?), bool? considerTransportPriorities = default(bool?), bool? optimizationPremium = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task StartOptimizationAsync(Guid id, OptimizationQuality? quality = default, List<TweakToObjective>? tweaksToObjective = default, bool? considerTransportPriorities = default, bool? optimizationPremium = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -242,7 +242,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> StartOptimizationWithHttpInfoAsync(Guid id, OptimizationQuality? quality = default(OptimizationQuality?), List<TweakToObjective>? tweaksToObjective = default(List<TweakToObjective>?), bool? considerTransportPriorities = default(bool?), bool? optimizationPremium = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> StartOptimizationWithHttpInfoAsync(Guid id, OptimizationQuality? quality = default, List<TweakToObjective>? tweaksToObjective = default, bool? considerTransportPriorities = default, bool? optimizationPremium = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -395,6 +395,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.routeoptimization.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -439,7 +440,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CancelOperationAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task CancelOperationAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             await CancelOperationWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
         }
@@ -452,7 +453,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object>> CancelOperationWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object>> CancelOperationWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             PTV.Developer.Clients.routeoptimization.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.routeoptimization.Client.RequestOptions();
@@ -536,6 +537,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.routeoptimization.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -580,7 +582,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Operation</returns>
-        public async System.Threading.Tasks.Task<Operation> GetOperationStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Operation> GetOperationStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Operation> localVarResponse = await GetOperationStatusWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -594,7 +596,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Operation)</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Operation>> GetOperationStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Operation>> GetOperationStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             PTV.Developer.Clients.routeoptimization.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.routeoptimization.Client.RequestOptions();
@@ -677,6 +679,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.routeoptimization.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -721,7 +724,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task StartEvaluationAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task StartEvaluationAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             await StartEvaluationWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
         }
@@ -734,7 +737,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object>> StartEvaluationWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object>> StartEvaluationWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             PTV.Developer.Clients.routeoptimization.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.routeoptimization.Client.RequestOptions();
@@ -796,7 +799,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="optimizationPremium">Set Optimization Premium to true to boost quality of results for all **quality** modes by taking advantage of additional computational resources.  Transactions&#39; packages for Optimization Premium are calculated differently.  See [here](./concepts/optimization-premium) for more information. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void StartOptimization(Guid id, OptimizationQuality? quality = default(OptimizationQuality?), List<TweakToObjective>? tweaksToObjective = default(List<TweakToObjective>?), bool? considerTransportPriorities = default(bool?), bool? optimizationPremium = default(bool?), int operationIndex = 0)
+        public void StartOptimization(Guid id, OptimizationQuality? quality = default, List<TweakToObjective>? tweaksToObjective = default, bool? considerTransportPriorities = default, bool? optimizationPremium = default, int operationIndex = 0)
         {
             StartOptimizationWithHttpInfo(id, quality, tweaksToObjective, considerTransportPriorities, optimizationPremium);
         }
@@ -812,7 +815,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="optimizationPremium">Set Optimization Premium to true to boost quality of results for all **quality** modes by taking advantage of additional computational resources.  Transactions&#39; packages for Optimization Premium are calculated differently.  See [here](./concepts/optimization-premium) for more information. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object> StartOptimizationWithHttpInfo(Guid id, OptimizationQuality? quality = default(OptimizationQuality?), List<TweakToObjective>? tweaksToObjective = default(List<TweakToObjective>?), bool? considerTransportPriorities = default(bool?), bool? optimizationPremium = default(bool?), int operationIndex = 0)
+        public PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object> StartOptimizationWithHttpInfo(Guid id, OptimizationQuality? quality = default, List<TweakToObjective>? tweaksToObjective = default, bool? considerTransportPriorities = default, bool? optimizationPremium = default, int operationIndex = 0)
         {
             PTV.Developer.Clients.routeoptimization.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.routeoptimization.Client.RequestOptions();
 
@@ -825,6 +828,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
             };
 
             var localVarContentType = PTV.Developer.Clients.routeoptimization.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -889,7 +893,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task StartOptimizationAsync(Guid id, OptimizationQuality? quality = default(OptimizationQuality?), List<TweakToObjective>? tweaksToObjective = default(List<TweakToObjective>?), bool? considerTransportPriorities = default(bool?), bool? optimizationPremium = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task StartOptimizationAsync(Guid id, OptimizationQuality? quality = default, List<TweakToObjective>? tweaksToObjective = default, bool? considerTransportPriorities = default, bool? optimizationPremium = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             await StartOptimizationWithHttpInfoAsync(id, quality, tweaksToObjective, considerTransportPriorities, optimizationPremium, operationIndex, cancellationToken).ConfigureAwait(false);
         }
@@ -906,7 +910,7 @@ namespace PTV.Developer.Clients.routeoptimization.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object>> StartOptimizationWithHttpInfoAsync(Guid id, OptimizationQuality? quality = default(OptimizationQuality?), List<TweakToObjective>? tweaksToObjective = default(List<TweakToObjective>?), bool? considerTransportPriorities = default(bool?), bool? optimizationPremium = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PTV.Developer.Clients.routeoptimization.Client.ApiResponse<Object>> StartOptimizationWithHttpInfoAsync(Guid id, OptimizationQuality? quality = default, List<TweakToObjective>? tweaksToObjective = default, bool? considerTransportPriorities = default, bool? optimizationPremium = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
 
             PTV.Developer.Clients.routeoptimization.Client.RequestOptions localVarRequestOptions = new PTV.Developer.Clients.routeoptimization.Client.RequestOptions();

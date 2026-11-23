@@ -37,7 +37,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="singleTripPerRoute">Restricts the number of trips per route to one.  See [here](./concepts/route-structure-control) for more information. (default to false).</param>
         /// <param name="singleDepotPerRoute">Restricts the number of different depot locations in the route of a vehicle to at most one. The vehicle start and end locations do not count here.  See [here](./concepts/route-structure-control) for more information. (default to false).</param>
         /// <param name="mixedLoadingProhibitions">Defines restrictions regarding which load categories of transports are disallowed to be mixed on the same trip. .</param>
-        public PlanningRestrictions(bool? singleTripPerRoute = false, bool? singleDepotPerRoute = false, List<MixedLoadingProhibition> mixedLoadingProhibitions = default(List<MixedLoadingProhibition>))
+        public PlanningRestrictions(bool? singleTripPerRoute = false, bool? singleDepotPerRoute = false, List<MixedLoadingProhibition> mixedLoadingProhibitions = default)
         {
             // use default value if no "singleTripPerRoute" provided
             this.SingleTripPerRoute = singleTripPerRoute ?? false;

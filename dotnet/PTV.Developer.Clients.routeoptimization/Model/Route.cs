@@ -41,7 +41,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// </summary>
         /// <param name="vehicleId">The ID of the vehicle that is assigned to this route. A vehicle can be assigned to one route at most. (required).</param>
         /// <param name="stops">A sequence of stops along this route. Each stop is at a specific location, either a customer location or a depot location. At a customer location, transports are scheduled in order of their type: deliveries before pickups. The sequence of deliveries and pickups is always sorted by Last In - First Out (LIFO). At a depot location a stop groups either deliveries or pickups.  See [here](./concepts/locations-transports-and-stops) for more information. (required).</param>
-        public Route(string vehicleId = default(string), List<Stop> stops = default(List<Stop>))
+        public Route(string vehicleId = default, List<Stop> stops = default)
         {
             // to ensure "vehicleId" is required (not null)
             if (vehicleId == null)

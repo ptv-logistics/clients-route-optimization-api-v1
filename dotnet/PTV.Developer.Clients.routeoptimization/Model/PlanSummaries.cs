@@ -40,7 +40,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// Initializes a new instance of the <see cref="PlanSummaries" /> class.
         /// </summary>
         /// <param name="summaries">summaries (required).</param>
-        public PlanSummaries(List<PlanSummary> summaries = default(List<PlanSummary>))
+        public PlanSummaries(List<PlanSummary> summaries = default)
         {
             // to ensure "summaries" is required (not null)
             if (summaries == null)

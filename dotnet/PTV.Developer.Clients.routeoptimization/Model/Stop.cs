@@ -43,7 +43,7 @@ namespace PTV.Developer.Clients.routeoptimization.Model
         /// <param name="tripId">The trip ID groups several subsequent stops. The first stop and the last stop of a route may not have a trip ID only if the vehicle that is assigned to this route has a start or an end location, respectively.  See [here](./concepts/routes-and-trips) for more information..</param>
         /// <param name="deliveryIds">A list of transport IDs that are delivered at this stop..</param>
         /// <param name="pickupIds">A list of transport IDs that are picked up at this stop..</param>
-        public Stop(string locationId = default(string), string tripId = default(string), List<string> deliveryIds = default(List<string>), List<string> pickupIds = default(List<string>))
+        public Stop(string locationId = default, string tripId = default, List<string> deliveryIds = default, List<string> pickupIds = default)
         {
             // to ensure "locationId" is required (not null)
             if (locationId == null)
